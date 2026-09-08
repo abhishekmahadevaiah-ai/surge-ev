@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8">
+  <meta name="kombai-design-canvas" content="true">
+
+
+
+  <script src="https://unpkg.com/@tailwindcss/browser@4.3.3/dist/index.global.js" integrity="sha384-2ql948lIdLcGEE0/qxNiudyTjgauA3RDJERu5xW75kFCvSl5a9odyQYCb6tEjnmB" crossorigin="anonymous"></script>
+
+  <style>html, body { margin: 0; padding: 0; } #root { display: contents; }</style>
+</head><body>
+  <div id="root"><style>
+    @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+.surge-page{font-family:'IBM Plex Sans',sans-serif;background:#14161A;color:#F3F1EB;}
+.font-display{font-family:'Big Shoulders Display',sans-serif;}
+.font-body{font-family:'IBM Plex Sans',sans-serif;}
+.font-mono{font-family:'IBM Plex Mono',monospace;}
+.grid-overlay{background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:42px 42px;}
+.ticker-track{will-change:transform;}
+.signal-trace{stroke-dasharray:1;stroke-dashoffset:1;}
+.signal-cursor{transform-box:fill-box;transform-origin:center;}
+.status-dot{box-shadow:0 0 0 2px rgba(107,235,159,.12),0 0 12px rgba(107,235,159,.62);}
+.status-dot-yellow{box-shadow:0 0 0 2px rgba(255,197,48,.12),0 0 12px rgba(255,197,48,.56);}
+.hairline-glow{box-shadow:inset 0 1px 0 rgba(255,90,31,.5);}
+.surge-page a:focus-visible{outline:2px solid #FFC530;outline-offset:3px;}
+@media (max-width:767px){.grid-overlay{background-size:30px 30px;}}
+</style>
+<link data-kid="1" data-name="webfont stylesheet link" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css" rel="stylesheet"/>
+<div class="surge-page min-h-screen overflow-x-clip" data-kid="2" data-name="page layout container">
+    <nav aria-label="Main navigation" class="sticky top-0 z-50 border-b border-[#FF5A1F]/65 bg-[#14161A]" data-kid="2-1" data-name="main navigation bar">
+        <div class="mx-auto flex max-w-[1280px] flex-wrap items-center gap-x-4 gap-y-3 px-6 py-4 md:px-8 xl:px-10" data-kid="2-1-1" data-name="navigation content container">
+            <div class="mr-auto flex items-end gap-4" data-kid="2-1-1-1" data-name="brand and location container">
+                <a class="font-display text-[2.65rem] font-extrabold uppercase leading-[.72] tracking-[-.04em] text-[#FFC530]" data-kid="2-1-1-1-1" data-name="SURGE brand link" href="#top">
+                    SURGE
+                </a>
+                <span class="font-mono text-[9px] uppercase leading-[1.15] tracking-[.16em] text-[#97958F]" data-kid="2-1-1-1-2" data-name="location identifier text">
+                    BENGALURU
+                    <br data-kid="2-1-1-1-2-1" data-name="line break"/>
+                    / KARNATAKA
+                </span>
+            </div>
+            <div class="hidden items-center gap-3 lg:flex" data-kid="2-1-1-2" data-name="navigation links container">
+                <span class="font-mono text-[10px] font-semibold uppercase tracking-[.16em] text-[#FF5A1F]" data-kid="2-1-1-2-1" data-name="charging status label">
+                    [ CHARGING ]
+                </span>
+                <a class="font-mono text-[11px] text-[#C6C4BD] hover:text-[#FFC530]" data-kid="2-1-1-2-2" data-name="mobile app link" href="#app">
+                    Mobile App
+                </a>
+                <a class="font-mono text-[11px] text-[#C6C4BD] hover:text-[#FFC530]" data-kid="2-1-1-2-3" data-name="locations link" href="#network">
+                    Locations
+                </a>
+                <a class="font-mono text-[11px] text-[#C6C4BD] hover:text-[#FFC530]" data-kid="2-1-1-2-4" data-name="how to charge link" href="#how-it-works">
+                    How to Charge
+                </a>
+            </div>
+            <div class="hidden items-center gap-3 border-l border-[#3B3D42] pl-4 lg:flex" data-kid="2-1-1-3" data-name="business navigation container">
+                <span class="font-mono text-[10px] font-semibold uppercase tracking-[.16em] text-[#FF5A1F]" data-kid="2-1-1-3-1" data-name="business status label">
+                    [ BUSINESS ]
+                </span>
+                <a class="font-mono text-[11px] text-[#C6C4BD] hover:text-[#FFC530]" data-kid="2-1-1-3-2" data-name="fleet partner link" href="#fleet">
+                    Become a Fleet Partner
+                </a>
+                <a class="font-mono text-[11px] text-[#C6C4BD] hover:text-[#FFC530]" data-kid="2-1-1-3-3" data-name="host station link" href="#fleet">
+                    Host a Station
+                </a>
+                <a class="font-mono text-[11px] text-[#C6C4BD] hover:text-[#FFC530]" data-kid="2-1-1-3-4" data-name="franchisee link" href="#fleet">
+                    Franchisee
+                </a>
+            </div>
+            <a class="flex h-10 shrink-0 items-center gap-2 border border-[#FFC530] bg-[#FFC530] px-3 font-mono text-[11px] font-semibold uppercase tracking-[.12em] text-[#14161A] hover:bg-[#FFD86A]" data-kid="2-1-1-4" data-name="primary find charger button" href="#network">
+                <span data-kid="2-1-1-4-1" data-name="button label text">
+                    Find a charger
+                </span>
+                <i aria-hidden="true" class="ti ti-arrow-up-right text-[16px] text-[#14161A]" data-kid="2-1-1-4-2" data-name="up-right arrow icon">
+                </i>
+            </a>
+            <div class="flex w-full items-center justify-between border-t border-[#32343A] pt-3 lg:hidden" data-kid="2-1-1-5" data-name="mobile navigation menu">
+                <span class="font-mono text-[10px] uppercase tracking-[.14em] text-[#FF5A1F]" data-kid="2-1-1-5-1" data-name="mobile charging label">
+                    [ CHARGING ]
+                </span>
+                <span class="font-mono text-[9px] uppercase tracking-[.1em] text-[#AAA8A1]" data-kid="2-1-1-5-2" data-name="mobile menu links text">
+                    APP · LOCATIONS · HOW TO CHARGE
+                </span>
+                <span class="font-mono text-[10px] uppercase tracking-[.14em] text-[#FF5A1F]" data-kid="2-1-1-5-3" data-name="mobile business label">
+                    [ BUSINESS ]
+                </span>
+            </div>
+        </div>
+    </nav>
+    <div aria-label="Live station status" class="overflow-hidden border-b border-[#3B3D42] bg-[#1A1D24] py-3" data-kid="2-2" data-name="live station status section">
+        <div class="ticker-track flex w-max items-center gap-8 whitespace-nowrap px-4 font-mono text-[10px] uppercase tracking-[.14em] text-[#C6C4BD]" data-dynamic="true" data-kid="2-2-1" data-name="station status ticker track" data-reason="element is moved by animation script">
+            <span class="text-[#FF5A1F]" data-kid="2-2-1-1" data-name="status section title">
+                LIVE / NETWORK STATUS
+            </span>
+            <span data-kid="2-2-1-2" data-name="koramangala station status">
+                <b class="status-dot mr-2 inline-block size-2 bg-[#6BEB9F]" data-kid="2-2-1-2-1" data-name="koramangala status dot">
+                </b>
+                KORAMANGALA 4TH BLOCK
+                <em class="not-italic text-[#6BEB9F]" data-kid="2-2-1-2-2" data-name="koramangala availability text">
+                    AVAILABLE
+                </em>
+            </span>
+            <span data-kid="2-2-1-3" data-name="indiranagar station status">
+                <b class="status-dot-yellow mr-2 inline-block size-2 bg-[#FFC530]" data-kid="2-2-1-3-1" data-name="indiranagar status dot">
+                </b>
+                INDIRANAGAR
+                <em class="not-italic text-[#FFC530]" data-kid="2-2-1-3-2" data-name="indiranagar availability text">
+                    BUSY
+                </em>
+            </span>
+            <span data-kid="2-2-1-4" data-name="mysuru highway station status">
+                <b class="status-dot mr-2 inline-block size-2 bg-[#6BEB9F]" data-kid="2-2-1-4-1" data-name="mysuru highway status dot">
+                </b>
+                MYSURU HIGHWAY
+                <em class="not-italic text-[#6BEB9F]" data-kid="2-2-1-4-2" data-name="mysuru highway availability text">
+                    AVAILABLE
+                </em>
+            </span>
+            <span data-kid="2-2-1-5" data-name="hosur road station status">
+                <b class="status-dot-yellow mr-2 inline-block size-2 bg-[#FFC530]" data-kid="2-2-1-5-1" data-name="hosur road status dot">
+                </b>
+                HOSUR ROAD
+                <em class="not-italic text-[#FFC530]" data-kid="2-2-1-5-2" data-name="hosur road availability text">
+                    BUSY
+                </em>
+            </span>
+            <span data-kid="2-2-1-6" data-name="whitefield station status">
+                <b class="status-dot mr-2 inline-block size-2 bg-[#6BEB9F]" data-kid="2-2-1-6-1" data-name="whitefield status dot">
+                </b>
+                WHITEFIELD
+                <em class="not-italic text-[#6BEB9F]" data-kid="2-2-1-6-2" data-name="whitefield availability text">
+                    AVAILABLE
+                </em>
+            </span>
+            <span class="text-[#FF5A1F]" data-kid="2-2-1-7" data-name="status section title">
+                LIVE / NETWORK STATUS
+            </span>
+            <span data-kid="2-2-1-8" data-name="koramangala station status">
+                <b class="status-dot mr-2 inline-block size-2 bg-[#6BEB9F]" data-kid="2-2-1-8-1" data-name="koramangala status dot">
+                </b>
+                KORAMANGALA 4TH BLOCK
+                <em class="not-italic text-[#6BEB9F]" data-kid="2-2-1-8-2" data-name="koramangala availability text">
+                    AVAILABLE
+                </em>
+            </span>
+            <span data-kid="2-2-1-9" data-name="indiranagar station status">
+                <b class="status-dot-yellow mr-2 inline-block size-2 bg-[#FFC530]" data-kid="2-2-1-9-1" data-name="indiranagar status dot">
+                </b>
+                INDIRANAGAR
+                <em class="not-italic text-[#FFC530]" data-kid="2-2-1-9-2" data-name="indiranagar availability text">
+                    BUSY
+                </em>
+            </span>
+            <span data-kid="2-2-1-10" data-name="mysuru highway station status">
+                <b class="status-dot mr-2 inline-block size-2 bg-[#6BEB9F]" data-kid="2-2-1-10-1" data-name="mysuru highway status dot">
+                </b>
+                MYSURU HIGHWAY
+                <em class="not-italic text-[#6BEB9F]" data-kid="2-2-1-10-2" data-name="mysuru highway availability text">
+                    AVAILABLE
+                </em>
+            </span>
+            <span data-kid="2-2-1-11" data-name="hosur road station status">
+                <b class="status-dot-yellow mr-2 inline-block size-2 bg-[#FFC530]" data-kid="2-2-1-11-1" data-name="hosur road status dot">
+                </b>
+                HOSUR ROAD
+                <em class="not-italic text-[#FFC530]" data-kid="2-2-1-11-2" data-name="hosur road availability text">
+                    BUSY
+                </em>
+            </span>
+            <span data-kid="2-2-1-12" data-name="whitefield station status">
+                <b class="status-dot mr-2 inline-block size-2 bg-[#6BEB9F]" data-kid="2-2-1-12-1" data-name="whitefield status dot">
+                </b>
+                WHITEFIELD
+                <em class="not-italic text-[#6BEB9F]" data-kid="2-2-1-12-2" data-name="whitefield availability text">
+                    AVAILABLE
+                </em>
+            </span>
+        </div>
+    </div>
+    <main data-kid="2-3" data-name="main page content" id="top">
+        <section aria-labelledby="hero-title" class="mx-auto max-w-[1280px] px-6 pb-14 pt-8 md:px-10 md:pt-10 xl:px-12" data-kid="2-3-1" data-name="hero section">
+            <div class="grid border border-[#FF5A1F]/70 lg:grid-cols-2" data-kid="2-3-1-1" data-name="hero layout container">
+                <div class="grid-overlay flex min-h-[585px] flex-col justify-between border-b border-[#FF5A1F]/60 p-7 md:p-10 lg:border-b-0 lg:border-r xl:p-12" data-kid="2-3-1-1-1" data-name="hero content column">
+                    <div class="font-mono text-[10px] uppercase tracking-[.16em] text-[#FF5A1F]" data-kid="2-3-1-1-1-1" data-name="active grid status line">
+                        [00] ACTIVE GRID / KARNATAKA / 22:41:08 IST
+                    </div>
+                    <div class="mt-16 lg:mt-8" data-kid="2-3-1-1-1-2" data-name="headline and CTA container">
+                        <h1 class="font-display max-w-[570px] text-[clamp(4.35rem,8vw,8.2rem)] font-extrabold uppercase leading-[0.9] tracking-[-.045em] text-[#F3F1EB]" data-kid="2-3-1-1-1-2-1" data-name="hero title headline" id="hero-title">
+                            Plug in.
+                            <br data-kid="2-3-1-1-1-2-1-1" data-name="line break"/>
+                            <span class="text-[#FFC530]" data-kid="2-3-1-1-1-2-1-2" data-name="hero title highlight">
+                                Feel the
+                                <br data-kid="2-3-1-1-1-2-1-2-1" data-name="line break"/>
+                                surge.
+                            </span>
+                        </h1>
+                        <p class="mt-8 max-w-[390px] text-base leading-7 text-[#BDBBB4]" data-kid="2-3-1-1-1-2-2" data-name="hero description text">
+                            180kW DC fast charging across Karnataka.
+                        </p>
+                        <a class="mt-7 inline-flex items-center gap-3 border border-[#FFC530] bg-[#FFC530] px-5 py-3 font-mono text-xs font-semibold uppercase tracking-[.1em] text-[#14161A] hover:bg-[#FFD86A]" data-kid="2-3-1-1-1-2-3" data-name="hero call-to-action button" href="#network">
+                            Find a charger
+                            <i aria-hidden="true" class="ti ti-arrow-up-right text-[16px] text-[#14161A]" data-kid="2-3-1-1-1-2-3-1" data-name="up-right arrow icon">
+                            </i>
+                        </a>
+                    </div>
+                    <div class="mt-10 border-l-2 border-[#FF5A1F] bg-[#1A1D24] px-4 py-3 font-mono text-[11px] leading-6 text-[#BDBBB4]" data-kid="2-3-1-1-1-3" data-name="system terminal interface">
+                        <div data-kid="2-3-1-1-1-3-1" data-name="terminal command line one">
+                            <span class="text-[#6BEB9F]" data-kid="2-3-1-1-1-3-1-1" data-name="terminal prompt indicator">
+                                $
+                            </span>
+                            surge --connect --city=blr
+                        </div>
+                        <div data-kid="2-3-1-1-1-3-2" data-name="terminal command line two">
+                            <span class="text-[#FFC530]" data-kid="2-3-1-1-1-3-2-1" data-name="terminal prompt indicator">
+                                >
+                            </span>
+                            scanning 500+ nodes...
+                            <span class="text-[#6BEB9F]" data-kid="2-3-1-1-1-3-2-2" data-name="terminal success indicator">
+                                ok
+                            </span>
+                        </div>
+                        <div data-kid="2-3-1-1-1-3-3" data-name="terminal command line three">
+                            <span class="text-[#FFC530]" data-kid="2-3-1-1-1-3-3-1" data-name="terminal prompt indicator">
+                                >
+                            </span>
+                            nearest bay: KORAMANGALA / 2.4 km
+                        </div>
+                    </div>
+                </div>
+                <div class="relative min-h-[585px] overflow-hidden bg-[#1A1D24] p-6 md:p-8" data-kid="2-3-1-1-2" data-name="hero visual container">
+                    <div class="flex items-start justify-between font-mono text-[10px] uppercase tracking-[.15em]" data-kid="2-3-1-1-2-1" data-name="oscilloscope status header">
+                        <span class="text-[#FF5A1F]" data-kid="2-3-1-1-2-1-1" data-name="oscilloscope title">
+                            OSCILLOSCOPE / BAY 01
+                        </span>
+                        <span class="text-[#6BEB9F]" data-kid="2-3-1-1-2-1-2" data-name="signal nominal indicator">
+                            <b class="pulse-dot mr-1" data-dynamic="true" data-kid="2-3-1-1-2-1-2-1" data-name="pulse dot" data-reason="scale/opacity oscillated by animation script">
+                                ●
+                            </b>
+                            SIGNAL NOMINAL
+                        </span>
+                    </div>
+                    <div class="grid-overlay absolute inset-6 top-[76px] bottom-[142px] border border-[#5B4035]/80 md:inset-8 md:top-[78px] md:bottom-[142px]" data-kid="2-3-1-1-2-2" data-name="oscilloscope chart container">
+                        <svg aria-label="Live charging waveform" class="absolute inset-0 h-full w-full" data-kid="2-3-1-1-2-2-1" data-name="charging waveform graphic" preserveaspectratio="none" role="img" viewbox="0 0 640 420">
+                            <g opacity=".18" stroke="#FF5A1F" vector-effect="non-scaling-stroke">
+                                <line x1="0" x2="640" y1="84" y2="84">
+                                </line>
+                                <line x1="0" x2="640" y1="168" y2="168">
+                                </line>
+                                <line x1="0" x2="640" y1="252" y2="252">
+                                </line>
+                                <line x1="0" x2="640" y1="336" y2="336">
+                                </line>
+                                <line x1="80" x2="80" y1="0" y2="420">
+                                </line>
+                                <line x1="160" x2="160" y1="0" y2="420">
+                                </line>
+                                <line x1="240" x2="240" y1="0" y2="420">
+                                </line>
+                                <line x1="320" x2="320" y1="0" y2="420">
+                                </line>
+                                <line x1="400" x2="400" y1="0" y2="420">
+                                </line>
+                                <line x1="480" x2="480" y1="0" y2="420">
+                                </line>
+                                <line x1="560" x2="560" y1="0" y2="420">
+                                </line>
+                            </g>
+                            <g opacity=".34" stroke="#FF5A1F" vector-effect="non-scaling-stroke">
+                                <line x1="0" x2="640" y1="300" y2="300">
+                                </line>
+                                <line x1="120" x2="120" y1="0" y2="420">
+                                </line>
+                                <line x1="320" x2="320" y1="0" y2="420">
+                                </line>
+                                <line x1="520" x2="520" y1="0" y2="420">
+                                </line>
+                            </g>
+                            <path class="signal-trace" d="M0 230 L70 230 C90 230 92 108 122 108 S152 350 183 350 S214 145 244 145 S276 290 305 290 S340 86 372 86 S403 322 433 322 S466 176 495 176 S528 252 556 252 S590 108 640 108" fill="none" pathlength="1" stroke="#FF5A1F" stroke-width="4" vector-effect="non-scaling-stroke">
+                            </path>
+                            <path class="signal-trace" d="M0 255 C80 255 82 207 120 207 S165 278 205 278 S250 185 290 185 S335 247 375 247 S415 163 455 163 S500 238 540 238 S590 200 640 200" fill="none" opacity=".9" pathlength="1" stroke="#FFC530" stroke-width="2" vector-effect="non-scaling-stroke">
+                            </path>
+                            <circle class="signal-cursor-ring" cx="372" cy="86" fill="none" opacity=".4" r="18" stroke="#FFC530" stroke-width="1">
+                            </circle>
+                            <circle class="signal-cursor" cx="372" cy="86" fill="#FFC530" r="7">
+                            </circle>
+                            <g fill="#898780" font-family="IBM Plex Mono, monospace" font-size="10">
+                                <text x="9" y="17">
+                                    +180
+                                </text>
+                                <text x="9" y="313">
+                                    0
+                                </text>
+                                <text x="9" y="398">
+                                    -180
+                                </text>
+                                <text x="112" y="401">
+                                    0.5s
+                                </text>
+                                <text x="308" y="401">
+                                    1.0s
+                                </text>
+                                <text x="508" y="401">
+                                    1.5s
+                                </text>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="absolute bottom-6 left-6 right-6 grid grid-cols-2 border-t border-[#FF5A1F]/60 bg-[#14161A]/90 md:left-8 md:right-8" data-kid="2-3-1-1-2-3" data-name="charging summary panel">
+                        <div class="border-r border-[#FF5A1F]/50 p-4 md:p-5" data-kid="2-3-1-1-2-3-1" data-name="output power summary">
+                            <div class="font-mono text-[9px] uppercase tracking-[.15em] text-[#8E8D88]" data-kid="2-3-1-1-2-3-1-1" data-name="label text">
+                                Output / live
+                            </div>
+                            <div class="font-display mt-1 text-4xl font-bold text-[#FFC530] md:text-5xl" data-kid="2-3-1-1-2-3-1-2" data-name="power value text">
+                                180 kW
+                            </div>
+                        </div>
+                        <div class="p-4 md:p-5" data-kid="2-3-1-1-2-3-2" data-name="bay status summary">
+                            <div class="font-mono text-[9px] uppercase tracking-[.15em] text-[#8E8D88]" data-kid="2-3-1-1-2-3-2-1" data-name="label text">
+                                Bay status
+                            </div>
+                            <div class="mt-2 font-mono text-sm font-semibold text-[#F3F1EB]" data-kid="2-3-1-1-2-3-2-2" data-name="bay active status text">
+                                BAY 01 ACTIVE
+                            </div>
+                            <div class="mt-1 font-mono text-[10px] text-[#FF5A1F]" data-kid="2-3-1-1-2-3-2-3" data-name="grid capacity text">
+                                GRID 500 kVA
+                                <span class="ml-2 text-[#BDBBB4]" data-kid="2-3-1-1-2-3-2-3-1" data-name="connector type text">
+                                    / CCS2
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid border-x border-b border-[#FF5A1F]/60 md:grid-cols-3" data-kid="2-3-1-2" data-name="metrics grid container">
+                <div class="border-b border-[#FF5A1F]/50 p-6 md:border-b-0 md:border-r" data-kid="2-3-1-2-1" data-name="power metric card">
+                    <div class="font-mono text-[10px] uppercase tracking-[.16em] text-[#8E8D88]" data-kid="2-3-1-2-1-1" data-name="power metric label">
+                        01 / Power per charger
+                    </div>
+                    <div class="mt-3 font-display text-5xl font-bold text-[#F3F1EB]" data-kid="2-3-1-2-1-2" data-name="power metric value">
+                        180
+                        <span class="text-[#FF5A1F]" data-kid="2-3-1-2-1-2-1" data-name="power unit label">
+                            kW
+                        </span>
+                    </div>
+                </div>
+                <div class="border-b border-[#FF5A1F]/50 p-6 md:border-b-0 md:border-r" data-kid="2-3-1-2-2" data-name="session time metric card">
+                    <div class="font-mono text-[10px] uppercase tracking-[.16em] text-[#8E8D88]" data-kid="2-3-1-2-2-1" data-name="session time label">
+                        02 / Typical session
+                    </div>
+                    <div class="mt-3 font-display text-5xl font-bold text-[#FFC530]" data-kid="2-3-1-2-2-2" data-name="session time value">
+                        ~18
+                        <span class="text-3xl" data-kid="2-3-1-2-2-2-1" data-name="session time unit label">
+                            MIN
+                        </span>
+                    </div>
+                    <div class="font-mono text-[10px] uppercase tracking-[.12em] text-[#AAA8A1]" data-kid="2-3-1-2-2-3" data-name="session percentage range">
+                        0—80%
+                    </div>
+                </div>
+                <div class="p-6" data-kid="2-3-1-2-3" data-name="driver support metric card">
+                    <div class="font-mono text-[10px] uppercase tracking-[.16em] text-[#8E8D88]" data-kid="2-3-1-2-3-1" data-name="driver support label">
+                        03 / Driver support
+                    </div>
+                    <div class="mt-3 font-display text-5xl font-bold text-[#F3F1EB]" data-kid="2-3-1-2-3-2" data-name="driver support value">
+                        24
+                        <span class="text-[#FF5A1F]" data-kid="2-3-1-2-3-2-1" data-name="driver support unit">
+                            /7
+                        </span>
+                    </div>
+                    <div class="font-mono text-[10px] uppercase tracking-[.12em] text-[#AAA8A1]" data-kid="2-3-1-2-3-3" data-name="driver support description">
+                        LIVE ASSISTANCE
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section aria-labelledby="network-title" class="mx-auto max-w-[1280px] scroll-mt-28 px-6 pb-14 md:px-10 xl:px-12" data-kid="2-3-2" data-name="network statistics section" id="network">
+            <div class="border border-[#FF5A1F]/70 bg-[#1A1D24]" data-kid="2-3-2-1" data-name="network grid layout container">
+                <div class="flex flex-wrap items-end justify-between gap-6 border-b border-[#FF5A1F]/60 p-7 md:p-9" data-kid="2-3-2-1-1" data-name="header container">
+                    <div data-kid="2-3-2-1-1-1" data-name="network section title container">
+                        <p class="font-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="2-3-2-1-1-1-1" data-name="section label">
+                            OUR CHARGING NETWORK / LIVE INVENTORY
+                        </p>
+                        <h2 class="font-display mt-3 text-6xl font-bold uppercase leading-[0.9] tracking-[-.03em] md:text-7xl" data-kid="2-3-2-1-1-1-2" data-name="network main headline" id="network-title">
+                            The grid keeps
+                            <br data-kid="2-3-2-1-1-1-2-1" data-name="line break"/>
+                            <span class="text-[#FFC530]" data-kid="2-3-2-1-1-1-2-2" data-name="network headline highlight">
+                                moving.
+                            </span>
+                        </h2>
+                    </div>
+                    <div class="font-mono text-right text-[10px] uppercase leading-5 tracking-[.08em] text-[#9B9993]" data-kid="2-3-2-1-1-2" data-name="network data feed status">
+                        DATA FEED: 08 SEP 2026
+                        <br data-kid="2-3-2-1-1-2-1" data-name="line break"/>
+                        <span class="text-[#6BEB9F]" data-kid="2-3-2-1-1-2-2" data-name="network systems reporting indicator">
+                            ● ALL SYSTEMS REPORTING
+                        </span>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-3" data-kid="2-3-2-1-2" data-name="metrics grid">
+                    <div class="border-b border-[#FF5A1F]/40 p-7 md:border-b-0 md:border-r md:p-8" data-kid="2-3-2-1-2-1" data-name="locations metric card">
+                        <div class="font-display text-7xl font-bold leading-none text-[#F3F1EB]" data-kid="2-3-2-1-2-1-1" data-name="locations value">
+                            500
+                            <span class="text-[#FF5A1F]" data-kid="2-3-2-1-2-1-1-1" data-name="plus sign">
+                                +
+                            </span>
+                        </div>
+                        <div class="mt-3 font-mono text-xs uppercase tracking-[.13em] text-[#FFC530]" data-kid="2-3-2-1-2-1-2" data-name="locations label">
+                            Locations
+                        </div>
+                        <div class="mt-6 h-2 bg-[#34373D]" data-kid="2-3-2-1-2-1-3" data-name="locations progress bar">
+                            <div class="h-full w-[82%] bg-[#FF5A1F]" data-kid="2-3-2-1-2-1-3-1" data-name="bar fill">
+                            </div>
+                        </div>
+                        <div class="mt-2 font-mono text-[10px] text-[#8D8B86]" data-kid="2-3-2-1-2-1-4" data-name="locations status text">
+                            ████████░░ 82% mapped
+                        </div>
+                    </div>
+                    <div class="border-b border-[#FF5A1F]/40 p-7 md:border-b-0 md:border-r md:p-8" data-kid="2-3-2-1-2-2" data-name="charge points metric card">
+                        <div class="font-display text-7xl font-bold leading-none text-[#F3F1EB]" data-kid="2-3-2-1-2-2-1" data-name="charge points value">
+                            1000
+                            <span class="text-[#FF5A1F]" data-kid="2-3-2-1-2-2-1-1" data-name="plus sign">
+                                +
+                            </span>
+                        </div>
+                        <div class="mt-3 font-mono text-xs uppercase tracking-[.13em] text-[#FFC530]" data-kid="2-3-2-1-2-2-2" data-name="charge points label">
+                            Charge points
+                        </div>
+                        <div class="mt-6 h-2 bg-[#34373D]" data-kid="2-3-2-1-2-2-3" data-name="charge points progress bar">
+                            <div class="h-full w-[68%] bg-[#FFC530]" data-kid="2-3-2-1-2-2-3-1" data-name="bar fill">
+                            </div>
+                        </div>
+                        <div class="mt-2 font-mono text-[10px] text-[#8D8B86]" data-kid="2-3-2-1-2-2-4" data-name="charge points status text">
+                            ███████░░░ 68% live
+                        </div>
+                    </div>
+                    <div class="p-7 md:p-8" data-kid="2-3-2-1-2-3" data-name="stations building metric card">
+                        <div class="font-display text-7xl font-bold leading-none text-[#F3F1EB]" data-kid="2-3-2-1-2-3-1" data-name="stations building value">
+                            90
+                            <span class="text-[#FF5A1F]" data-kid="2-3-2-1-2-3-1-1" data-name="plus sign">
+                                +
+                            </span>
+                        </div>
+                        <div class="mt-3 font-mono text-xs uppercase tracking-[.13em] text-[#FFC530]" data-kid="2-3-2-1-2-3-2" data-name="stations building label">
+                            Stations building
+                        </div>
+                        <div class="mt-6 h-2 bg-[#34373D]" data-kid="2-3-2-1-2-3-3" data-name="stations building progress bar">
+                            <div class="h-full w-[41%] bg-[#FF5A1F]" data-kid="2-3-2-1-2-3-3-1" data-name="bar fill">
+                            </div>
+                        </div>
+                        <div class="mt-2 font-mono text-[10px] text-[#8D8B86]" data-kid="2-3-2-1-2-3-4" data-name="stations building status text">
+                            ████░░░░░░ 41% energized
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section aria-labelledby="how-title" class="mx-auto max-w-[1280px] scroll-mt-28 px-6 pb-14 md:px-10 xl:px-12" data-kid="2-3-3" data-name="how it works section" id="how-it-works">
+            <div class="border border-[#3C3E44]" data-kid="2-3-3-1" data-name="driver protocol container">
+                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-[#3C3E44] px-7 py-5 md:px-8" data-kid="2-3-3-1-1" data-name="protocol header">
+                    <div data-kid="2-3-3-1-1-1" data-name="protocol label and title">
+                        <p class="font-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="2-3-3-1-1-1-1" data-name="protocol section label">
+                            DRIVER PROTOCOL / 03 STEPS
+                        </p>
+                        <h2 class="font-display mt-2 text-5xl font-bold uppercase leading-none" data-kid="2-3-3-1-1-1-2" data-name="protocol headline" id="how-title">
+                            Charge without the guesswork.
+                        </h2>
+                    </div>
+                    <span class="font-mono text-[10px] uppercase text-[#777771]" data-kid="2-3-3-1-1-2" data-name="protocol summary links">
+                        APP → CABLE → ROAD
+                    </span>
+                </div>
+                <div class="grid md:grid-cols-3" data-kid="2-3-3-1-2" data-name="protocol steps grid">
+                    <article class="border-b border-[#3C3E44] p-7 md:border-b-0 md:border-r md:p-8" data-kid="2-3-3-1-2-1" data-name="step one card">
+                        <div class="flex items-center justify-between" data-kid="2-3-3-1-2-1-1" data-name="step one header">
+                            <span class="font-mono text-4xl text-[#FFC530]" data-kid="2-3-3-1-2-1-1-1" data-name="step number">
+                                01
+                            </span>
+                            <i aria-hidden="true" class="ti ti-map-pin text-[25px] text-[#FFC530]" data-kid="2-3-3-1-2-1-1-2" data-name="map pin icon">
+                            </i>
+                        </div>
+                        <h3 class="font-display mt-14 text-5xl uppercase leading-none" data-kid="2-3-3-1-2-1-2" data-name="step one title">
+                            Locate
+                        </h3>
+                        <p class="mt-4 max-w-[280px] text-sm leading-6 text-[#AAA9A4]" data-kid="2-3-3-1-2-1-3" data-name="step one description">
+                            Open the app to see live bays near you and reserve a slot.
+                        </p>
+                        <div class="mt-10 border-t border-[#FF5A1F]/50 pt-3 font-mono text-[10px] uppercase tracking-[.14em] text-[#FF5A1F]" data-kid="2-3-3-1-2-1-4" data-name="step one status line">
+                            OPEN APP // GPS LOCK
+                        </div>
+                    </article>
+                    <article class="border-b border-[#3C3E44] p-7 md:border-b-0 md:border-r md:p-8" data-kid="2-3-3-1-2-2" data-name="step two card">
+                        <div class="flex items-center justify-between" data-kid="2-3-3-1-2-2-1" data-name="step two header">
+                            <span class="font-mono text-4xl text-[#FFC530]" data-kid="2-3-3-1-2-2-1-1" data-name="step number">
+                                02
+                            </span>
+                            <i aria-hidden="true" class="ti ti-plug text-[25px] text-[#FFC530]" data-kid="2-3-3-1-2-2-1-2" data-name="plug icon">
+                            </i>
+                        </div>
+                        <h3 class="font-display mt-14 text-5xl uppercase leading-none" data-kid="2-3-3-1-2-2-2" data-name="step two title">
+                            Plug
+                        </h3>
+                        <p class="mt-4 max-w-[280px] text-sm leading-6 text-[#AAA9A4]" data-kid="2-3-3-1-2-2-3" data-name="step two description">
+                            Connect your CCS2 cable. The station confirms your vehicle in seconds.
+                        </p>
+                        <div class="mt-10 border-t border-[#FF5A1F]/50 pt-3 font-mono text-[10px] uppercase tracking-[.14em] text-[#FF5A1F]" data-kid="2-3-3-1-2-2-4" data-name="step two status line">
+                            CCS2 LOCK // AUTH OK
+                        </div>
+                    </article>
+                    <article class="p-7 md:p-8" data-kid="2-3-3-1-2-3" data-name="step three card">
+                        <div class="flex items-center justify-between" data-kid="2-3-3-1-2-3-1" data-name="step three header">
+                            <span class="font-mono text-4xl text-[#FFC530]" data-kid="2-3-3-1-2-3-1-1" data-name="step number">
+                                03
+                            </span>
+                            <i aria-hidden="true" class="ti ti-bolt text-[25px] text-[#FFC530]" data-kid="2-3-3-1-2-3-1-2" data-name="bolt icon">
+                            </i>
+                        </div>
+                        <h3 class="font-display mt-14 text-5xl uppercase leading-none" data-kid="2-3-3-1-2-3-2" data-name="step three title">
+                            Charge
+                        </h3>
+                        <p class="mt-4 max-w-[280px] text-sm leading-6 text-[#AAA9A4]" data-kid="2-3-3-1-2-3-3" data-name="step three description">
+                            Watch the power climb, then drive on. Payment closes automatically.
+                        </p>
+                        <div class="mt-10 border-t border-[#FF5A1F]/50 pt-3 font-mono text-[10px] uppercase tracking-[.14em] text-[#FF5A1F]" data-kid="2-3-3-1-2-3-4" data-name="step three status line">
+                            AUTO-PAY // SESSION CLOSED
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section aria-labelledby="pricing-title" class="mx-auto max-w-[1280px] px-6 pb-14 md:px-10 xl:px-12" data-kid="2-3-4" data-name="pricing section">
+            <div class="mb-5 flex flex-wrap items-end justify-between gap-4" data-kid="2-3-4-1" data-name="pricing header container">
+                <div data-kid="2-3-4-1-1" data-name="pricing title container">
+                    <p class="font-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="2-3-4-1-1-1" data-name="pricing section label">
+                        RATE CARD / KWH
+                    </p>
+                    <h2 class="font-display mt-2 text-5xl font-bold uppercase leading-none" data-kid="2-3-4-1-1-2" data-name="pricing section headline" id="pricing-title">
+                        Simple rates. Clear terms.
+                    </h2>
+                </div>
+                <span class="font-mono text-[10px] uppercase tracking-[.12em] text-[#777771]" data-kid="2-3-4-1-2" data-name="currency info text">
+                    ALL PRICES IN INR
+                </span>
+            </div>
+            <div class="overflow-x-auto border border-[#FF5A1F]/75" data-kid="2-3-4-2" data-name="pricing table container">
+                <table class="w-full min-w-[720px] border-collapse font-mono text-sm" data-kid="2-3-4-2-1" data-name="rate table">
+                    <caption class="sr-only" data-kid="2-3-4-2-1-1" data-name="table description">
+                        SURGE charging prices for standard, fleet and peak use
+                    </caption>
+                    <thead data-kid="2-3-4-2-1-2" data-name="table head">
+                        <tr class="bg-[#1A1D24] text-left" data-kid="2-3-4-2-1-2-1" data-name="table head row">
+                            <th class="border-b border-[#FF5A1F]/60 p-5 text-[10px] font-normal uppercase tracking-[.18em] text-[#8D8B86]" data-kid="2-3-4-2-1-2-1-1" data-name="matrix header cell">
+                                Rate matrix
+                            </th>
+                            <th class="border-b border-l border-[#FF5A1F]/60 p-5 text-[10px] uppercase tracking-[.18em] text-[#F3F1EB]" data-kid="2-3-4-2-1-2-1-2" data-name="standard header cell">
+                                Standard
+                            </th>
+                            <th class="border-x border-b border-[#FFC530] bg-[#FFC530]/10 p-5 text-[10px] uppercase tracking-[.18em] text-[#FFC530]" data-kid="2-3-4-2-1-2-1-3" data-name="fleet header cell">
+                                Fleet
+                            </th>
+                            <th class="border-b border-l border-[#FF5A1F]/60 p-5 text-[10px] uppercase tracking-[.18em] text-[#F3F1EB]" data-kid="2-3-4-2-1-2-1-4" data-name="peak header cell">
+                                Peak
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody data-kid="2-3-4-2-1-3" data-name="table body">
+                        <tr data-kid="2-3-4-2-1-3-1" data-name="price row">
+                            <th class="border-t border-[#FF5A1F]/50 p-5 text-left text-[11px] font-normal uppercase tracking-[.08em] text-[#8D8B86]" data-kid="2-3-4-2-1-3-1-1" data-name="price label cell">
+                                Price / kWh
+                            </th>
+                            <td class="border-l border-t border-[#FF5A1F]/50 p-5 text-[#F3F1EB]" data-kid="2-3-4-2-1-3-1-2" data-name="standard price cell">
+                                ₹21/kWh
+                            </td>
+                            <td class="border-x border-t border-[#FFC530] bg-[#FFC530]/10 p-5 text-lg text-[#FFC530]" data-kid="2-3-4-2-1-3-1-3" data-name="fleet price cell">
+                                ₹19—20/kWh
+                            </td>
+                            <td class="border-l border-t border-[#FF5A1F]/50 p-5" data-kid="2-3-4-2-1-3-1-4" data-name="peak price cell">
+                                ₹22—24/kWh
+                            </td>
+                        </tr>
+                        <tr data-kid="2-3-4-2-1-3-2" data-name="best for row">
+                            <th class="border-t border-[#FF5A1F]/50 p-5 text-left text-[11px] font-normal uppercase tracking-[.08em] text-[#8D8B86]" data-kid="2-3-4-2-1-3-2-1" data-name="best for label cell">
+                                Best for
+                            </th>
+                            <td class="border-l border-t border-[#FF5A1F]/50 p-5" data-kid="2-3-4-2-1-3-2-2" data-name="standard best for cell">
+                                Everyday drivers
+                            </td>
+                            <td class="border-x border-t border-[#FFC530] bg-[#FFC530]/10 p-5 text-[#F3F1EB]" data-kid="2-3-4-2-1-3-2-3" data-name="fleet best for cell">
+                                High-volume fleets
+                            </td>
+                            <td class="border-l border-t border-[#FF5A1F]/50 p-5" data-kid="2-3-4-2-1-3-2-4" data-name="peak best for cell">
+                                Peak demand
+                            </td>
+                        </tr>
+                        <tr data-kid="2-3-4-2-1-3-3" data-name="terms row">
+                            <th class="border-t border-[#FF5A1F]/50 p-5 text-left text-[11px] font-normal uppercase tracking-[.08em] text-[#8D8B86]" data-kid="2-3-4-2-1-3-3-1" data-name="terms label cell">
+                                Terms
+                            </th>
+                            <td class="border-l border-t border-[#FF5A1F]/50 p-5 text-[#AAA9A4]" data-kid="2-3-4-2-1-3-3-2" data-name="standard terms cell">
+                                Pay as you go
+                            </td>
+                            <td class="border-x border-t border-[#FFC530] bg-[#FFC530]/10 p-5 text-[#AAA9A4]" data-kid="2-3-4-2-1-3-3-3" data-name="fleet terms cell">
+                                Monthly account pricing
+                            </td>
+                            <td class="border-l border-t border-[#FF5A1F]/50 p-5 text-[#AAA9A4]" data-kid="2-3-4-2-1-3-3-4" data-name="peak terms cell">
+                                Time-sensitive sessions
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section aria-labelledby="reliability-title" class="mx-auto max-w-[1280px] scroll-mt-28 px-6 pb-14 md:px-10 xl:px-12" data-kid="2-3-5" data-name="reliability section" id="reliability">
+            <div class="border border-[#FF5A1F]/70 bg-[#1A1D24]" data-kid="2-3-5-1" data-name="reliability container">
+                <div class="flex flex-wrap items-end justify-between gap-4 border-b border-[#FF5A1F]/60 p-7 md:p-8" data-kid="2-3-5-1-1" data-name="reliability header">
+                    <div data-kid="2-3-5-1-1-1" data-name="reliability title container">
+                        <p class="font-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="2-3-5-1-1-1-1" data-name="reliability label">
+                            RELIABILITY / HARDWARE MONITOR
+                        </p>
+                        <h2 class="font-display mt-2 text-6xl font-bold uppercase leading-[0.9]" data-kid="2-3-5-1-1-1-2" data-name="reliability headline" id="reliability-title">
+                            Built for the
+                            <br data-kid="2-3-5-1-1-1-2-1" data-name="line break"/>
+                            <span class="text-[#FFC530]" data-kid="2-3-5-1-1-1-2-2" data-name="reliability highlight">
+                                uptime.
+                            </span>
+                        </h2>
+                    </div>
+                    <div class="font-mono text-right text-[10px] uppercase leading-5 text-[#6BEB9F]" data-kid="2-3-5-1-1-2" data-name="reliability status text">
+                        ● OPERATIONS ONLINE
+                        <br data-kid="2-3-5-1-1-2-1" data-name="line break"/>
+                        <span class="text-[#8D8B86]" data-kid="2-3-5-1-1-2-2" data-name="last check timestamp">
+                            LAST CHECK 22:41:08 IST
+                        </span>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-[.82fr_1.18fr]" data-kid="2-3-5-1-2" data-name="reliability content grid">
+                    <div class="border-b border-[#FF5A1F]/50 p-7 lg:border-b-0 lg:border-r md:p-8" data-kid="2-3-5-1-2-1" data-name="power bus card">
+                        <div class="flex items-center justify-between font-mono text-[10px] uppercase tracking-[.15em] text-[#8D8B86]" data-kid="2-3-5-1-2-1-1" data-name="power bus header">
+                            <span data-kid="2-3-5-1-2-1-1-1" data-name="bus header label">
+                                LIVE POWER BUS
+                            </span>
+                            <span class="text-[#FFC530]" data-kid="2-3-5-1-2-1-1-2" data-name="bay label">
+                                BAY 01
+                            </span>
+                        </div>
+                        <div class="mt-8 flex items-end gap-3" data-kid="2-3-5-1-2-1-2" data-name="power bus value container">
+                            <span class="font-display text-8xl font-bold leading-none text-[#FFC530]" data-kid="2-3-5-1-2-1-2-1" data-name="power value">
+                                180
+                            </span>
+                            <span class="mb-2 font-mono text-sm text-[#FF5A1F]" data-kid="2-3-5-1-2-1-2-2" data-name="power unit and status text">
+                                kW
+                                <br data-kid="2-3-5-1-2-1-2-2-1" data-name="line break"/>
+                                ACTIVE
+                            </span>
+                        </div>
+                        <div aria-label="Power utilization 82 percent" class="mt-8 grid grid-cols-10 gap-1" data-kid="2-3-5-1-2-1-3" data-name="utilization visual graph">
+                            <span class="h-8 bg-[#FFC530]" data-kid="2-3-5-1-2-1-3-1" data-name="graph bar segment">
+                            </span>
+                            <span class="h-8 bg-[#FFC530]" data-kid="2-3-5-1-2-1-3-2" data-name="graph bar segment">
+                            </span>
+                            <span class="h-8 bg-[#FFC530]" data-kid="2-3-5-1-2-1-3-3" data-name="graph bar segment">
+                            </span>
+                            <span class="h-8 bg-[#FFC530]" data-kid="2-3-5-1-2-1-3-4" data-name="graph bar segment">
+                            </span>
+                            <span class="h-8 bg-[#FFC530]" data-kid="2-3-5-1-2-1-3-5" data-name="graph bar segment">
+                            </span>
+                            <span class="h-8 bg-[#FFC530]" data-kid="2-3-5-1-2-1-3-6" data-name="graph bar segment">
+                            </span>
+                            <span class="h-8 bg-[#FF5A1F]" data-kid="2-3-5-1-2-1-3-7" data-name="graph bar segment">
+                            </span>
+                            <span class="h-8 bg-[#FF5A1F]" data-kid="2-3-5-1-2-1-3-8" data-name="graph bar segment">
+                            </span>
+                            <span class="h-8 bg-[#3A3D43]" data-kid="2-3-5-1-2-1-3-9" data-name="graph bar segment">
+                            </span>
+                            <span class="h-8 bg-[#3A3D43]" data-kid="2-3-5-1-2-1-3-10" data-name="graph bar segment">
+                            </span>
+                        </div>
+                        <div class="mt-3 flex justify-between font-mono text-[10px] text-[#8D8B86]" data-kid="2-3-5-1-2-1-4" data-name="utilization metrics container">
+                            <span data-kid="2-3-5-1-2-1-4-1" data-name="min power">
+                                0 kW
+                            </span>
+                            <span data-kid="2-3-5-1-2-1-4-2" data-name="utilization percentage">
+                                82% draw
+                            </span>
+                            <span data-kid="2-3-5-1-2-1-4-3" data-name="max power">
+                                220 kW max
+                            </span>
+                        </div>
+                        <div class="mt-8 border-t border-[#3B3D42] pt-4 font-mono text-[10px] leading-6 text-[#AAA9A4]" data-kid="2-3-5-1-2-1-5" data-name="system diagnostics container">
+                            <div data-kid="2-3-5-1-2-1-5-1" data-name="diagnostic line one">
+                                <span class="text-[#6BEB9F]" data-kid="2-3-5-1-2-1-5-1-1" data-name="diagnostic status">
+                                    [OK]
+                                </span>
+                                HT CONNECTION / 500 kVA
+                            </div>
+                            <div data-kid="2-3-5-1-2-1-5-2" data-name="diagnostic line two">
+                                <span class="text-[#6BEB9F]" data-kid="2-3-5-1-2-1-5-2-1" data-name="diagnostic status">
+                                    [OK]
+                                </span>
+                                COOLING LOOP / NOMINAL
+                            </div>
+                            <div data-kid="2-3-5-1-2-1-5-3" data-name="diagnostic line three">
+                                <span class="text-[#FFC530]" data-kid="2-3-5-1-2-1-5-3-1" data-name="diagnostic status">
+                                    [--]
+                                </span>
+                                BAY 02 / READY TO START
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid sm:grid-cols-2" data-kid="2-3-5-1-2-2" data-name="reliability feature grid">
+                        <article class="border-b border-[#3B3D42] p-7 sm:border-r md:p-8" data-kid="2-3-5-1-2-2-1" data-name="reliability card one">
+                            <div class="flex items-start justify-between gap-3" data-kid="2-3-5-1-2-2-1-1" data-name="feature header">
+                                <i aria-hidden="true" class="ti ti-bolt text-[23px] text-[#FFC530]" data-kid="2-3-5-1-2-2-1-1-1" data-name="bolt icon">
+                                </i>
+                                <span class="font-mono text-[10px] text-[#6BEB9F]" data-kid="2-3-5-1-2-2-1-1-2" data-name="status label">
+                                    [ NOMINAL ]
+                                </span>
+                            </div>
+                            <h3 class="mt-12 font-mono text-xl uppercase leading-snug text-[#F3F1EB]" data-kid="2-3-5-1-2-2-1-2" data-name="feature title">
+                                500kVA
+                                <br data-kid="2-3-5-1-2-2-1-2-1" data-name="line break"/>
+                                HT connection
+                            </h3>
+                            <p class="mt-4 text-sm leading-6 text-[#AAA9A4]" data-kid="2-3-5-1-2-2-1-3" data-name="feature description">
+                                High-tension capacity keeps the station ready for fast sessions.
+                            </p>
+                        </article>
+                        <article class="border-b border-[#3B3D42] p-7 md:p-8" data-kid="2-3-5-1-2-2-2" data-name="reliability card two">
+                            <div class="flex items-start justify-between gap-3" data-kid="2-3-5-1-2-2-2-1" data-name="feature header">
+                                <i aria-hidden="true" class="ti ti-arrows-split-2 text-[23px] text-[#FFC530]" data-kid="2-3-5-1-2-2-2-1-1" data-name="split icon">
+                                </i>
+                                <span class="font-mono text-[10px] text-[#FFC530]" data-kid="2-3-5-1-2-2-2-1-2" data-name="status label">
+                                    [ READY ]
+                                </span>
+                            </div>
+                            <h3 class="mt-12 font-mono text-xl uppercase leading-snug text-[#F3F1EB]" data-kid="2-3-5-1-2-2-2-2" data-name="feature title">
+                                2×180kW
+                                <br data-kid="2-3-5-1-2-2-2-2-1" data-name="line break"/>
+                                independent bays
+                            </h3>
+                            <p class="mt-4 text-sm leading-6 text-[#AAA9A4]" data-kid="2-3-5-1-2-2-2-3" data-name="feature description">
+                                Two drivers can charge independently without splitting one session.
+                            </p>
+                        </article>
+                        <article class="p-7 sm:border-r md:p-8" data-kid="2-3-5-1-2-2-3" data-name="reliability card three">
+                            <div class="flex items-start justify-between gap-3" data-kid="2-3-5-1-2-2-3-1" data-name="feature header">
+                                <i aria-hidden="true" class="ti ti-plug-connected text-[23px] text-[#FFC530]" data-kid="2-3-5-1-2-2-3-1-1" data-name="plug connected icon">
+                                </i>
+                                <span class="font-mono text-[10px] text-[#6BEB9F]" data-kid="2-3-5-1-2-2-3-1-2" data-name="status label">
+                                    [ ACTIVE ]
+                                </span>
+                            </div>
+                            <h3 class="mt-12 font-mono text-xl uppercase leading-snug text-[#F3F1EB]" data-kid="2-3-5-1-2-2-3-2" data-name="feature title">
+                                CCS2
+                                <br data-kid="2-3-5-1-2-2-3-2-1" data-name="line break"/>
+                                connector
+                            </h3>
+                            <p class="mt-4 text-sm leading-6 text-[#AAA9A4]" data-kid="2-3-5-1-2-2-3-3" data-name="feature description">
+                                The standard connection for modern electric cars and fleet vans.
+                            </p>
+                        </article>
+                        <article class="border-t border-[#3B3D42] p-7 md:p-8" data-kid="2-3-5-1-2-2-4" data-name="reliability card four">
+                            <div class="flex items-start justify-between gap-3" data-kid="2-3-5-1-2-2-4-1" data-name="feature header">
+                                <i aria-hidden="true" class="ti ti-radar-2 text-[23px] text-[#FFC530]" data-kid="2-3-5-1-2-2-4-1-1" data-name="radar icon">
+                                </i>
+                                <span class="font-mono text-[10px] text-[#6BEB9F]" data-kid="2-3-5-1-2-2-4-1-2" data-name="status label">
+                                    [ NOMINAL ]
+                                </span>
+                            </div>
+                            <h3 class="mt-12 font-mono text-xl uppercase leading-snug text-[#F3F1EB]" data-kid="2-3-5-1-2-2-4-2" data-name="feature title">
+                                24/7
+                                <br data-kid="2-3-5-1-2-2-4-2-1" data-name="line break"/>
+                                monitoring
+                            </h3>
+                            <p class="mt-4 text-sm leading-6 text-[#AAA9A4]" data-kid="2-3-5-1-2-2-4-3" data-name="feature description">
+                                People and systems watch every session, day and night.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section aria-labelledby="stories-title" class="mx-auto max-w-[1280px] px-6 pb-16 md:px-10 xl:px-12" data-kid="2-3-6" data-name="stories section">
+            <div class="mb-7 flex flex-wrap items-end justify-between gap-4" data-kid="2-3-6-1" data-name="stories header">
+                <div data-kid="2-3-6-1-1" data-name="stories title container">
+                    <p class="font-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="2-3-6-1-1-1" data-name="stories label">
+                        DRIVER LOGS / VERIFIED SESSIONS
+                    </p>
+                    <h2 class="font-display mt-2 text-6xl font-bold uppercase leading-[0.9]" data-kid="2-3-6-1-1-2" data-name="stories headline" id="stories-title">
+                        Good stops
+                        <br data-kid="2-3-6-1-1-2-1"/>
+                        <span class="text-[#FFC530]" data-kid="2-3-6-1-1-2-2">
+                            travel far.
+                        </span>
+                    </h2>
+                </div>
+                <span class="font-mono text-[10px] uppercase tracking-[.12em] text-[#777771]" data-kid="2-3-6-1-2" data-name="entries count">
+                    04 RECENT ENTRIES
+                </span>
+            </div>
+            <div class="grid border-t border-[#FF5A1F]/70 md:grid-cols-2 md:gap-x-10" data-kid="2-3-6-2" data-name="stories grid">
+                <article class="border-b border-[#3B3D42] py-7 md:border-r md:pr-8" data-kid="2-3-6-2-1" data-name="story one">
+                    <div class="flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[.08em] text-[#FF5A1F]" data-kid="2-3-6-2-1-1" data-name="story log info">
+                        <span data-kid="2-3-6-2-1-1-1" data-name="log location">
+                            > LOG [ KORAMANGALA 4TH BLOCK ]
+                        </span>
+                        <span class="text-[#777771]" data-kid="2-3-6-2-1-1-2" data-name="log timestamp">
+                            08 SEP / 18:42
+                        </span>
+                    </div>
+                    <p class="mt-5 max-w-[470px] text-lg leading-7 text-[#F3F1EB]" data-kid="2-3-6-2-1-2" data-name="story body">
+                        “I was back on the road before I finished my coffee. The live bay status was spot on.”
+                    </p>
+                    <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[10px] text-[#AAA9A4]" data-kid="2-3-6-2-1-3" data-name="story footer">
+                        <span data-kid="2-3-6-2-1-3-1" data-name="author">
+                            — ANANYA RAO / BENGALURU
+                        </span>
+                        <span class="text-[#FFC530]" data-kid="2-3-6-2-1-3-2" data-name="rating">
+                            ★★★★★
+                        </span>
+                        <span class="border border-[#5B5D62] px-2 py-1 text-[#C7C5BE]" data-kid="2-3-6-2-1-3-3" data-name="source">
+                            [ GOOGLE ]
+                        </span>
+                    </div>
+                </article>
+                <article class="border-b border-[#3B3D42] py-7 md:pl-8" data-kid="2-3-6-2-2" data-name="story two">
+                    <div class="flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[.08em] text-[#FF5A1F]" data-kid="2-3-6-2-2-1" data-name="story log info">
+                        <span data-kid="2-3-6-2-2-1-1" data-name="log location">
+                            > LOG [ INDIRANAGAR ]
+                        </span>
+                        <span class="text-[#777771]" data-kid="2-3-6-2-2-1-2" data-name="log timestamp">
+                            07 SEP / 21:08
+                        </span>
+                    </div>
+                    <p class="mt-5 max-w-[470px] text-lg leading-7 text-[#F3F1EB]" data-kid="2-3-6-2-2-2" data-name="story body">
+                        “No hunting for a working charger after work. Plugged in and the app handled the rest.”
+                    </p>
+                    <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[10px] text-[#AAA9A4]" data-kid="2-3-6-2-2-3" data-name="story footer">
+                        <span data-kid="2-3-6-2-2-3-1" data-name="author">
+                            — KARTHIK S / BENGALURU
+                        </span>
+                        <span class="text-[#FFC530]" data-kid="2-3-6-2-2-3-2" data-name="rating">
+                            ★★★★★
+                        </span>
+                        <span class="border border-[#5B5D62] px-2 py-1 text-[#C7C5BE]" data-kid="2-3-6-2-2-3-3" data-name="source">
+                            [ PLAY STORE ]
+                        </span>
+                    </div>
+                </article>
+                <article class="border-b border-[#3B3D42] py-7 md:border-r md:pr-8" data-kid="2-3-6-2-3" data-name="story three">
+                    <div class="flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[.08em] text-[#FF5A1F]" data-kid="2-3-6-2-3-1" data-name="story log info">
+                        <span data-kid="2-3-6-2-3-1-1" data-name="log location">
+                            > LOG [ MYSURU HIGHWAY ]
+                        </span>
+                        <span class="text-[#777771]" data-kid="2-3-6-2-3-1-2" data-name="log timestamp">
+                            06 SEP / 07:16
+                        </span>
+                    </div>
+                    <p class="mt-5 max-w-[470px] text-lg leading-7 text-[#F3F1EB]" data-kid="2-3-6-2-3-2" data-name="story body">
+                        “The stop on Mysuru Highway made the weekend run feel effortless. Fast charge, clean handoff.”
+                    </p>
+                    <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[10px] text-[#AAA9A4]" data-kid="2-3-6-2-3-3" data-name="story footer">
+                        <span data-kid="2-3-6-2-3-3-1" data-name="author">
+                            — RAHUL T / MYSURU ROUTE
+                        </span>
+                        <span class="text-[#FFC530]" data-kid="2-3-6-2-3-3-2" data-name="rating">
+                            ★★★★★
+                        </span>
+                        <span class="border border-[#5B5D62] px-2 py-1 text-[#C7C5BE]" data-kid="2-3-6-2-3-3-3" data-name="source">
+                            [ GOOGLE ]
+                        </span>
+                    </div>
+                </article>
+                <article class="border-b border-[#3B3D42] py-7 md:pl-8" data-kid="2-3-6-2-4" data-name="story four">
+                    <div class="flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[.08em] text-[#FF5A1F]" data-kid="2-3-6-2-4-1" data-name="story log info">
+                        <span data-kid="2-3-6-2-4-1-1" data-name="log location">
+                            > LOG [ HOSUR ROAD ]
+                        </span>
+                        <span class="text-[#777771]" data-kid="2-3-6-2-4-1-2" data-name="log timestamp">
+                            04 SEP / 16:55
+                        </span>
+                    </div>
+                    <p class="mt-5 max-w-[470px] text-lg leading-7 text-[#F3F1EB]" data-kid="2-3-6-2-4-2" data-name="story body">
+                        “Our drivers spend less time waiting and more time delivering. The fleet rate helps too.”
+                    </p>
+                    <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[10px] text-[#AAA9A4]" data-kid="2-3-6-2-4-3" data-name="story footer">
+                        <span data-kid="2-3-6-2-4-3-1" data-name="author">
+                            — MEERA N / FLEET OPERATOR
+                        </span>
+                        <span class="text-[#FFC530]" data-kid="2-3-6-2-4-3-2" data-name="rating">
+                            ★★★★★
+                        </span>
+                        <span class="border border-[#5B5D62] px-2 py-1 text-[#C7C5BE]" data-kid="2-3-6-2-4-3-3" data-name="source">
+                            [ PLAY STORE ]
+                        </span>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section aria-labelledby="fleet-title" class="w-full border-y border-[#14161A] bg-[#FF5A1F] text-[#14161A]" data-kid="2-3-7" data-name="fleet call-to-action section" id="fleet">
+            <div class="mx-auto flex max-w-[1280px] flex-col items-start gap-7 px-6 py-12 md:px-10 md:py-14 xl:px-12" data-kid="2-3-7-1" data-name="fleet CTA layout">
+                <div data-kid="2-3-7-1-1" data-name="fleet CTA content">
+                    <p class="font-mono text-[10px] font-semibold uppercase tracking-[.18em]" data-kid="2-3-7-1-1-1" data-name="fleet label">
+                        [ B2B / FLEET OPERATIONS ]
+                    </p>
+                    <h2 class="font-display mt-4 max-w-[760px] text-[clamp(3.7rem,7vw,7rem)] font-extrabold uppercase leading-[0.9] tracking-[-.04em]" data-kid="2-3-7-1-1-2" data-name="fleet headline" id="fleet-title">
+                        Running a fleet?
+                        <br data-kid="2-3-7-1-1-2-1" data-name="line break"/>
+                        Charge smarter,
+                        <br data-kid="2-3-7-1-1-2-2" data-name="line break"/>
+                        not longer.
+                    </h2>
+                    <p class="mt-6 max-w-[490px] font-mono text-xs leading-6 text-[#14161A]/75" data-kid="2-3-7-1-1-3" data-name="fleet features">
+                        DEPOT PARTNERSHIPS · DRIVER ACCOUNTS · MONTHLY REPORTING
+                    </p>
+                </div>
+                <a class="inline-flex shrink-0 items-center gap-3 border-[3px] border-[#14161A] bg-[#14161A] px-5 py-4 font-mono text-xs font-semibold uppercase tracking-[.12em] text-[#FF5A1F] hover:bg-[#FFC530] hover:text-[#14161A]" data-kid="2-3-7-1-2" data-name="fleet CTA button" href="#contact">
+                    Talk to us
+                    <i aria-hidden="true" class="ti ti-arrow-up-right text-[16px] text-[#FF5A1F]" data-kid="2-3-7-1-2-1" data-name="up-right arrow icon">
+                    </i>
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer class="mx-auto max-w-[1280px] px-6 pb-8 pt-10 md:px-10 xl:px-12" data-kid="2-4" data-name="footer section" id="contact">
+        <div class="grid grid-cols-2 gap-x-6 gap-y-10 border-t border-[#FF5A1F]/70 pt-8 md:grid-cols-4 md:gap-8" data-kid="2-4-1" data-name="footer grid">
+            <div data-kid="2-4-1-1" data-name="brand logo and description">
+                <div class="font-display text-5xl font-bold leading-none text-[#FFC530]" data-kid="2-4-1-1-1" data-name="brand title">
+                    SURGE
+                </div>
+                <div class="mt-4 font-mono text-[10px] uppercase leading-5 tracking-[.08em] text-[#8D8B86]" data-kid="2-4-1-1-2" data-name="brand description">
+                    THE LIVE CHARGING
+                    <br data-kid="2-4-1-1-2-1" data-name="line break"/>
+                    NETWORK OF KARNATAKA.
+                </div>
+            </div>
+            <div data-kid="2-4-1-2" data-name="network links">
+                <h3 class="font-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="2-4-1-2-1" data-name="network section title">
+                    NETWORK
+                </h3>
+                <div class="mt-5 space-y-2.5 font-mono text-xs text-[#C3C1BA]" data-kid="2-4-1-2-2" data-name="links container">
+                    <a class="block hover:text-[#FFC530]" data-kid="2-4-1-2-2-1" data-name="all locations link" href="#network">
+                        All locations
+                    </a>
+                    <a class="block hover:text-[#FFC530]" data-kid="2-4-1-2-2-2" data-name="bengaluru link" href="#network">
+                        Bengaluru
+                    </a>
+                    <a class="block hover:text-[#FFC530]" data-kid="2-4-1-2-2-3" data-name="mysuru highway link" href="#network">
+                        Mysuru Highway
+                    </a>
+                    <a class="block hover:text-[#FFC530]" data-kid="2-4-1-2-2-4" data-name="hosur road link" href="#network">
+                        Hosur Road
+                    </a>
+                    <a class="block hover:text-[#FFC530]" data-kid="2-4-1-2-2-5" data-name="whitefield link" href="#network">
+                        Whitefield
+                    </a>
+                </div>
+            </div>
+            <div data-kid="2-4-1-3" data-name="company resources links">
+                <h3 class="font-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="2-4-1-3-1" data-name="company section title">
+                    COMPANY / RESOURCES
+                </h3>
+                <div class="mt-5 space-y-2.5 font-mono text-xs text-[#C3C1BA]" data-kid="2-4-1-3-2" data-name="links container">
+                    <a class="block hover:text-[#FFC530]" data-kid="2-4-1-3-2-1" data-name="about surge link" href="#">
+                        About Surge
+                    </a>
+                    <a class="block hover:text-[#FFC530]" data-kid="2-4-1-3-2-2" data-name="fleet partner link" href="#fleet">
+                        Become a fleet partner
+                    </a>
+                    <a class="block hover:text-[#FFC530]" data-kid="2-4-1-3-2-3" data-name="host station link" href="#">
+                        Host a station
+                    </a>
+                    <a class="block hover:text-[#FFC530]" data-kid="2-4-1-3-2-4" data-name="support centre link" href="#">
+                        Support centre
+                    </a>
+                    <a class="block hover:text-[#FFC530]" data-kid="2-4-1-3-2-5" data-name="contact link" href="#contact">
+                        Contact operations
+                    </a>
+                </div>
+            </div>
+            <div data-kid="2-4-1-4" data-name="app resources and social" id="app">
+                <h3 class="font-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="2-4-1-4-1" data-name="resources section title">
+                    RESOURCES / APP / SOCIAL
+                </h3>
+                <div class="mt-5 border border-[#3C3E44] p-4" data-kid="2-4-1-4-2" data-name="app download card">
+                    <div class="font-mono text-[10px] uppercase text-[#FFC530]" data-kid="2-4-1-4-2-1" data-name="app download title">
+                        GET THE DRIVER APP
+                    </div>
+                    <p class="mt-2 text-xs leading-5 text-[#AAA9A4]" data-kid="2-4-1-4-2-2" data-name="app description">
+                        Live bays, route planning, and receipts in one place.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2" data-kid="2-4-1-4-2-3" data-name="app store links container">
+                        <a class="border border-[#64656A] px-2 py-1.5 font-mono text-[9px] uppercase text-[#C3C1BA] hover:border-[#FFC530] hover:text-[#FFC530]" data-kid="2-4-1-4-2-3-1" data-name="app store link" href="#">
+                            App Store
+                        </a>
+                        <a class="border border-[#64656A] px-2 py-1.5 font-mono text-[9px] uppercase text-[#C3C1BA] hover:border-[#FFC530] hover:text-[#FFC530]" data-kid="2-4-1-4-2-3-2" data-name="google play link" href="#">
+                            Google Play
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-5 flex items-center gap-4 text-xl text-[#AAA9A4]" data-kid="2-4-1-4-3" data-name="social icons container">
+                    <a aria-label="Instagram" class="hover:text-[#FFC530]" data-kid="2-4-1-4-3-1" data-name="instagram link" href="#">
+                        <i aria-hidden="true" class="ti ti-brand-instagram text-[20px] text-[#AAA9A4]" data-kid="2-4-1-4-3-1-1" data-name="instagram icon">
+                        </i>
+                    </a>
+                    <a aria-label="LinkedIn" class="hover:text-[#FFC530]" data-kid="2-4-1-4-3-2" data-name="linkedin link" href="#">
+                        <i aria-hidden="true" class="ti ti-brand-linkedin text-[20px] text-[#AAA9A4]" data-kid="2-4-1-4-3-2-1" data-name="linkedin icon">
+                        </i>
+                    </a>
+                    <a aria-label="X" class="hover:text-[#FFC530]" data-kid="2-4-1-4-3-3" data-name="x link" href="#">
+                        <i aria-hidden="true" class="ti ti-brand-x text-[20px] text-[#AAA9A4]" data-kid="2-4-1-4-3-3-1" data-name="x icon">
+                        </i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-10 flex flex-wrap justify-between gap-3 border-t border-[#32343A] pt-4 font-mono text-[9px] uppercase tracking-[.14em] text-[#777771]" data-kid="2-4-2" data-name="footer bottom bar">
+            <span data-kid="2-4-2-1" data-name="copyright text">
+                © 2026 SURGE ENERGY NETWORKS
+            </span>
+            <span data-kid="2-4-2-2" data-name="system status container">
+                STATUS:
+                <b class="text-[#6BEB9F]" data-kid="2-4-2-2-1" data-name="system status value">
+                    ALL SYSTEMS NOMINAL
+                </b>
+            </span>
+            <span data-kid="2-4-2-3" data-name="footer branding slogan">
+                MADE FOR THE LONG WAY HOME
+            </span>
+        </div>
+    </footer>
+</div>
+<script type="module">
+    import { animate } from 'https://esm.sh/animejs@4';
+
+  const ticker = document.querySelector('.ticker-track');
+  const tracePaths = document.querySelectorAll('.signal-trace');
+  const cursor = document.querySelector('.signal-cursor');
+  const cursorRing = document.querySelector('.signal-cursor-ring');
+  const pulseDots = document.querySelectorAll('.pulse-dot');
+
+  if (ticker) {
+    animate(ticker, { translateX: ['0%', '-50%'], duration: 24000, ease: 'linear', loop: true });
+  }
+  if (tracePaths.length) {
+    animate(tracePaths, { strokeDashoffset: [1, 0], duration: 1800, delay: 220, ease: 'out(3)' });
+  }
+  if (cursor) {
+    animate(cursor, { r: [6, 9, 6], duration: 1500, ease: 'inOutSine', loop: true });
+  }
+  if (cursorRing) {
+    animate(cursorRing, { r: [10, 22, 10], opacity: [.6, .08, .6], duration: 1500, ease: 'inOutSine', loop: true });
+  }
+  if (pulseDots.length) {
+    animate(pulseDots, { scale: [1, 1.25, 1], opacity: [.65, 1, .65], duration: 1400, ease: 'inOutSine', loop: true });
+  }
+</script>
+</div>
+</body></html>

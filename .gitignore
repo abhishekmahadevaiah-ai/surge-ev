@@ -1,0 +1,19 @@
+# Local tooling
+node_modules/
+.wrangler/
+.cloudflare/
+.kombai/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local previews
+*.log
