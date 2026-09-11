@@ -1,14 +1,18 @@
 # SURGE — EV charging network
 
-Static landing page variants for SURGE, a Bengaluru-based EV charge point operator in Karnataka.
+Static landing page variants for SURGE, a Tumkur-based EV charge point operator in Karnataka.
 
 ## Pages
 
 - [`index.html`](./index.html) — Industrial Grid, the primary landing page
 - [`editorial-voltage.html`](./editorial-voltage.html) — Editorial Voltage variation
 - [`terminal-ops.html`](./terminal-ops.html) — Terminal Ops variation
+- [`contact.html`](./contact.html) — Validated partnership and support enquiry form
+- [`privacy.html`](./privacy.html) — Privacy notice
+- [`terms.html`](./terms.html) — Website terms
+- [`404.html`](./404.html) — Custom not-found page
 
-The pages are standalone HTML and load Tailwind CSS, Big Shoulders Display, IBM Plex Sans, IBM Plex Mono, Tabler Icons, and Anime.js from their CDNs. No build step is required.
+The pages are standalone HTML and load Tailwind CSS, Big Shoulders Display, IBM Plex Sans, IBM Plex Mono, Tabler Icons, and Anime.js from their CDNs. No build step is required. Shared legal-page styling, consent behavior, SEO assets, and accessibility helpers live in [`legal.css`](./legal.css), [`site-enhancements.css`](./site-enhancements.css), and [`site-enhancements.js`](./site-enhancements.js).
 
 ## Preview locally
 
@@ -34,3 +38,12 @@ Before the first deployment:
 4. Push to `main` or run **Deploy SURGE to Cloudflare Pages** manually.
 
 The workflow intentionally keeps credentials out of the repository. Cloudflare will provide the deployed `*.pages.dev` URL after the first successful run.
+
+## Launch checklist support
+
+- `robots.txt` points crawlers to [`sitemap.xml`](./sitemap.xml).
+- Submit `https://www.surgecharging.com/sitemap.xml` under **Google Search Console → Sitemaps** after verifying the `surgecharging.com` domain.
+- Keep **Always Use HTTPS** enabled in Cloudflare; [`_headers`](./_headers) adds HSTS and browser security headers.
+- Optional analytics are consent-gated. Add the production GA4 measurement ID to [`analytics-config.js`](./analytics-config.js) only after the analytics property is created.
+- App-store and social links intentionally route to [`contact.html`](./contact.html) until real production URLs are available.
+- The legal pages are launch templates and should be reviewed against the final operating entity, contact details, and applicable legal advice before public launch.

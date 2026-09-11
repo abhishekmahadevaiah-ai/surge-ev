@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact SURGE — EV charging partnerships</title>
+  <meta name="description" content="Contact SURGE about fleet partnerships, station hosting, charging support, and electric vehicle infrastructure in Karnataka.">
+  <link rel="canonical" href="https://www.surgecharging.com/contact.html">
+  <meta name="theme-color" content="#14161A">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SURGE">
+  <meta property="og:title" content="Contact SURGE — EV charging partnerships">
+  <meta property="og:description" content="Talk to SURGE about fleet partnerships, station hosting, charging support, and EV infrastructure in Karnataka.">
+  <meta property="og:url" content="https://www.surgecharging.com/contact.html">
+  <meta property="og:image" content="https://www.surgecharging.com/og-image.svg">
+  <meta property="og:image:alt" content="SURGE voltage waveform for Karnataka EV charging">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact SURGE — EV charging partnerships">
+  <meta name="twitter:description" content="Talk to SURGE about fleet partnerships, station hosting, charging support, and EV infrastructure in Karnataka.">
+  <meta name="twitter:image" content="https://www.surgecharging.com/og-image.svg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/legal.css">
+  <link rel="stylesheet" href="/site-enhancements.css">
+  <script src="/analytics-config.js"></script>
+  <script src="/site-enhancements.js" defer></script>
+</head>
+<body>
+  <div class="legal-shell">
+    <header class="legal-header">
+      <a class="legal-brand" href="/">SURGE<span aria-hidden="true">.</span></a>
+      <nav class="legal-nav" aria-label="Contact navigation">
+        <a href="/">Home</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+    </header>
+    <main class="legal-main">
+      <p class="legal-kicker">SURGE / Operations desk</p>
+      <h1 class="legal-title">Talk to us</h1>
+      <p class="legal-intro">Use this form for fleet partnerships, station hosting, support questions, or access to the driver app. It opens your email client with a prepared message; no form data is posted to a third-party service.</p>
+      <p class="legal-meta">Tumkur / Karnataka / India</p>
+
+      <form class="legal-form" id="contact-form" novalidate>
+        <label for="contact-name">Name
+          <input id="contact-name" name="name" type="text" autocomplete="name" minlength="2" required>
+        </label>
+        <label for="contact-email">Work email
+          <input id="contact-email" name="email" type="email" autocomplete="email" required>
+        </label>
+        <label for="contact-topic">Topic
+          <select id="contact-topic" name="topic" required>
+            <option value="">Choose a topic</option>
+            <option>Fleet partnership</option>
+            <option>Host a station</option>
+            <option>Charging support</option>
+            <option>Driver app access</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label for="contact-message">Message
+          <textarea id="contact-message" name="message" minlength="20" required></textarea>
+        </label>
+        <label class="legal-trap" for="contact-website">Leave this field empty
+          <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </label>
+        <button class="legal-button" type="submit">Prepare email <span aria-hidden="true">↗</span></button>
+        <p class="legal-status" id="contact-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <section class="legal-section">
+        <h2>Direct line</h2>
+        <p>Email <a href="mailto:partnerships@surge.energy">partnerships@surge.energy</a> if your email client is not configured for the form.</p>
+      </section>
+    </main>
+    <footer class="legal-footer">© 2026 SURGE / Tumkur, Karnataka</footer>
+  </div>
+  <script>
+    const contactForm = document.querySelector('#contact-form');
+    const contactStatus = document.querySelector('#contact-status');
+
+    contactForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      contactStatus.textContent = '';
+
+      if (!contactForm.reportValidity()) {
+        contactStatus.textContent = 'Please complete the highlighted fields.';
+        return;
+      }
+
+      const formData = new FormData(contactForm);
+      if (String(formData.get('website') || '').trim()) {
+        contactStatus.textContent = 'Message could not be prepared. Please email us directly.';
+        return;
+      }
+
+      const subject = `[SURGE] ${formData.get('topic')}`;
+      const body = [
+        `Name: ${formData.get('name')}`,
+        `Email: ${formData.get('email')}`,
+        `Topic: ${formData.get('topic')}`,
+        '',
+        String(formData.get('message'))
+      ].join('\n');
+
+      contactStatus.textContent = 'Opening your email client…';
+      window.location.href = `mailto:partnerships@surge.energy?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</body>
+</html>

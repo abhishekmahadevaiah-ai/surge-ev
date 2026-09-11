@@ -1,0 +1,138 @@
+:root {
+  --surge-ink: #14161a;
+  --surge-surface: #1c1e23;
+  --surge-paper: #f0f0ea;
+  --surge-yellow: #ffc530;
+  --surge-orange: #ff5a1f;
+  --surge-muted: #a9abb0;
+  --surge-line: #2a2d35;
+  --surge-font-body: 'IBM Plex Sans', sans-serif;
+  --surge-font-mono: 'IBM Plex Mono', monospace;
+}
+
+.surge-skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 200;
+  transform: translateY(-180%);
+  border: 1px solid var(--surge-yellow);
+  background: var(--surge-ink);
+  color: var(--surge-yellow);
+  padding: .75rem 1rem;
+  font: 600 .75rem/1 var(--surge-font-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transition: transform 180ms ease;
+}
+
+.surge-skip-link:focus {
+  transform: translateY(0);
+}
+
+.surge-cookie-banner {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 150;
+  display: grid;
+  gap: 1rem;
+  width: min(100% - 2rem, 46rem);
+  margin: 0 auto;
+  border: 1px solid var(--surge-yellow);
+  background: var(--surge-ink);
+  color: var(--surge-paper);
+  padding: 1rem;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, .36);
+  font-family: var(--surge-font-body);
+}
+
+.surge-cookie-banner[hidden] {
+  display: none;
+}
+
+.surge-cookie-title {
+  margin: 0;
+  color: var(--surge-yellow);
+  font: 600 .72rem/1.2 var(--surge-font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.surge-cookie-copy {
+  margin: .5rem 0 0;
+  color: var(--surge-muted);
+  font-size: .875rem;
+  line-height: 1.55;
+}
+
+.surge-cookie-copy a {
+  color: var(--surge-yellow);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.surge-cookie-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .625rem;
+}
+
+.surge-cookie-button {
+  cursor: pointer;
+  border: 1px solid var(--surge-yellow);
+  background: transparent;
+  color: var(--surge-yellow);
+  padding: .7rem .8rem;
+  font: 600 .68rem/1 var(--surge-font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.surge-cookie-button:hover,
+.surge-cookie-button:focus-visible {
+  background: var(--surge-yellow);
+  color: var(--surge-ink);
+}
+
+.surge-cookie-button:active {
+  transform: translateY(1px);
+}
+
+.surge-cookie-button--primary {
+  background: var(--surge-yellow);
+  color: var(--surge-ink);
+}
+
+.surge-focus,
+.legal-nav a,
+.legal-form input,
+.legal-form textarea,
+.legal-form select {
+  transition: outline-offset 160ms ease, border-color 160ms ease, color 160ms ease, background-color 160ms ease;
+}
+
+.surge-focus:active {
+  transform: translateY(1px);
+}
+
+@media (min-width: 44rem) {
+  .surge-cookie-banner {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 1.15rem 1.25rem;
+  }
+
+  .surge-cookie-actions {
+    justify-content: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surge-skip-link,
+  .surge-cookie-button {
+    transition: none;
+  }
+}
