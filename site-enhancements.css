@@ -106,6 +106,32 @@
   color: var(--surge-ink);
 }
 
+.surge-consent-settings {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 140;
+  cursor: pointer;
+  border: 1px solid var(--surge-line);
+  background: var(--surge-ink);
+  color: var(--surge-muted);
+  padding: .55rem .7rem;
+  font: 600 .62rem/1 var(--surge-font-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transition: border-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.surge-consent-settings:hover,
+.surge-consent-settings:focus-visible {
+  border-color: var(--surge-yellow);
+  color: var(--surge-yellow);
+}
+
+.surge-consent-settings:active {
+  transform: translateY(1px);
+}
+
 .surge-focus,
 .legal-nav a,
 .legal-form input,
@@ -132,7 +158,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .surge-skip-link,
-  .surge-cookie-button {
+  .surge-cookie-button,
+  .surge-consent-settings {
     transition: none;
   }
 }

@@ -18,6 +18,41 @@
     }
   };
 
+  const clearConsent = () => {
+    try {
+      window.localStorage.removeItem(consentKey);
+    } catch {
+      // The site remains usable when storage is unavailable.
+    }
+  };
+
+  const setAnalyticsDisabled = (disabled) => {
+    if (analyticsId) {
+      window[`ga-disable-${analyticsId}`] = disabled;
+    }
+  };
+
+  const clearAnalyticsCookies = () => {
+    document.querySelector('[data-surge-analytics]')?.remove();
+
+    const hostname = window.location.hostname;
+    const domain = hostname.startsWith('www.') ? `.${hostname.slice(4)}` : hostname;
+    const analyticsCookiePattern = /^_(?:ga|gid|gat)(?:_|$)/;
+
+    document.cookie
+      .split(';')
+      .map((cookie) => cookie.split('=')[0].trim())
+      .filter((name) => analyticsCookiePattern.test(name))
+      .forEach((name) => {
+        const expired = `${name}=; Max-Age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+        document.cookie = expired;
+        document.cookie = `${expired}; domain=${hostname}`;
+        if (domain !== hostname) {
+          document.cookie = `${expired}; domain=${domain}`;
+        }
+      });
+  };
+
   const loadAnalytics = () => {
     if (!/^G-[A-Z0-9]+$/i.test(analyticsId) || document.querySelector('[data-surge-analytics]')) {
       return;
@@ -54,9 +89,32 @@
     document.body.prepend(skipLink);
   };
 
+  const addConsentSettingsControl = () => {
+    if (!readConsent() || document.querySelector('.surge-consent-settings')) {
+      return;
+    }
+
+    const button = document.createElement('button');
+    button.className = 'surge-consent-settings';
+    button.type = 'button';
+    button.setAttribute('aria-label', 'Open privacy settings');
+    button.textContent = 'Privacy settings';
+
+    button.addEventListener('click', () => {
+      clearConsent();
+      setAnalyticsDisabled(true);
+      clearAnalyticsCookies();
+      button.remove();
+      const banner = addConsentBanner();
+      banner?.querySelector('[data-consent="necessary"]')?.focus();
+    });
+
+    document.body.appendChild(button);
+  };
+
   const addConsentBanner = () => {
     if (readConsent() || document.querySelector('.surge-cookie-banner')) {
-      return;
+      return null;
     }
 
     const banner = document.createElement('aside');
@@ -83,20 +141,38 @@
       writeConsent(consent);
       banner.remove();
       if (consent === 'analytics') {
+        setAnalyticsDisabled(false);
         loadAnalytics();
+      } else {
+        setAnalyticsDisabled(true);
+        clearAnalyticsCookies();
       }
+      addConsentSettingsControl();
     });
 
     document.body.appendChild(banner);
+    return banner;
   };
 
   const initialise = () => {
     addSkipLink();
-    if (readConsent() === 'analytics') {
+    const consent = readConsent();
+
+    if (consent === 'analytics') {
+      setAnalyticsDisabled(false);
       loadAnalytics();
-    } else {
-      addConsentBanner();
+      addConsentSettingsControl();
+      return;
     }
+
+    if (consent === 'necessary') {
+      setAnalyticsDisabled(true);
+      addConsentSettingsControl();
+      return;
+    }
+
+    clearConsent();
+    addConsentBanner();
   };
 
   if (document.readyState === 'loading') {
