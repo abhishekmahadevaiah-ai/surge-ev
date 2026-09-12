@@ -4,7 +4,7 @@ Static landing page variants for SURGE, a Tumkur-based EV charge point operator 
 
 ## Pages
 
-- [`index.html`](./index.html) — v4 Industrial Grid landing page with an interactive Karnataka network map and procedural 180kW charger hero
+- [`index.html`](./index.html) — Industrial Grid primary landing page with the original 180kW oscilloscope hero
 - [`index-v3.html`](./index-v3.html) — noindex Route Ledger setup preview with local station filtering and launch ledger
 - [`electric-racing.html`](./electric-racing.html) — noindex BMW Formula E video preview
 - [`editorial-voltage.html`](./editorial-voltage.html) — Editorial Voltage variation
