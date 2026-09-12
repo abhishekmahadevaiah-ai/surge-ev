@@ -1,0 +1,294 @@
+.racing-page {
+  min-height: 100dvh;
+  overflow-x: clip;
+  background: var(--v3-ink);
+  color: var(--v3-paper);
+}
+
+body:has(.racing-page) .surge-cookie-banner {
+  border-radius: var(--v3-radius);
+  box-shadow: none;
+}
+
+.racing-header .v3-nav {
+  min-height: 4.5rem;
+}
+
+.racing-brand-meta {
+  display: none;
+  color: var(--v3-muted);
+  font: .6rem/1.35 var(--v3-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.racing-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.racing-nav-links a {
+  color: var(--v3-muted);
+  font: .63rem/1.2 var(--v3-mono);
+  letter-spacing: .1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 160ms ease;
+}
+
+.racing-nav-links a:hover,
+.racing-nav-links a:focus-visible {
+  color: var(--v3-yellow);
+}
+
+.racing-hero {
+  border-bottom: var(--v3-hairline) solid var(--v3-rule);
+  background: var(--v3-surface);
+  padding-block: clamp(3rem, 8vw, 7rem);
+}
+
+.racing-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(16rem, .78fr) minmax(24rem, 1.22fr);
+  align-items: end;
+  gap: clamp(2rem, 7vw, 7rem);
+}
+
+.racing-kicker {
+  margin: 0;
+  color: var(--v3-orange);
+  font: 600 .63rem/1.3 var(--v3-mono);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.racing-title {
+  max-width: 11ch;
+  margin: 1rem 0 0;
+  color: var(--v3-paper);
+  font: 800 clamp(3.8rem, 8vw, 8rem)/.8 var(--v3-display);
+  letter-spacing: -.045em;
+  text-transform: uppercase;
+}
+
+.racing-title span {
+  color: var(--v3-yellow);
+}
+
+.racing-intro {
+  max-width: 32rem;
+  margin: 1.5rem 0 0;
+  color: var(--v3-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.racing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin-top: 2rem;
+}
+
+.racing-video-figure {
+  margin: 0;
+}
+
+.racing-video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: var(--v3-hairline) solid var(--v3-rule-strong);
+  background: var(--v3-ink);
+}
+
+.racing-video-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.racing-video-state {
+  position: absolute;
+  inset: 1rem auto auto 1rem;
+  z-index: 1;
+  max-width: calc(100% - 2rem);
+  border: var(--v3-hairline) solid var(--v3-rule-strong);
+  background: var(--v3-ink);
+  color: var(--v3-muted);
+  padding: .55rem .65rem;
+  font: .58rem/1.35 var(--v3-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.racing-video-frame[data-state="loaded"] .racing-video-state {
+  display: none;
+}
+
+.racing-video-frame[data-state="error"] .racing-video-state {
+  color: var(--v3-orange);
+}
+
+.racing-video-fallback {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 1;
+  border-top: var(--v3-hairline) solid var(--v3-orange);
+  background: color-mix(in srgb, var(--v3-ink) 92%, transparent);
+  padding-top: .65rem;
+  color: var(--v3-paper);
+  font: .62rem/1.45 var(--v3-mono);
+  letter-spacing: .04em;
+}
+
+.racing-video-fallback[hidden] {
+  display: none;
+}
+
+.racing-video-fallback a,
+.racing-caption a {
+  color: var(--v3-yellow);
+  text-underline-offset: .25em;
+}
+
+.racing-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: var(--v3-hairline) solid var(--v3-rule);
+  padding: .85rem 0;
+  color: var(--v3-muted);
+  font: .61rem/1.4 var(--v3-mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.racing-caption a {
+  flex: 0 0 auto;
+}
+
+.racing-proof {
+  border-bottom: var(--v3-hairline) solid var(--v3-rule);
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+
+.racing-proof-grid {
+  display: grid;
+  grid-template-columns: minmax(14rem, .7fr) minmax(0, 1.3fr);
+  gap: clamp(2rem, 8vw, 8rem);
+}
+
+.racing-proof-title {
+  max-width: 10ch;
+  margin: .7rem 0 0;
+  color: var(--v3-paper);
+  font: 800 clamp(2.8rem, 5vw, 5rem)/.84 var(--v3-display);
+  text-transform: uppercase;
+}
+
+.racing-proof-copy {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--v3-muted);
+  line-height: 1.7;
+}
+
+.racing-fact-list {
+  display: grid;
+  margin: 2rem 0 0;
+  border-top: var(--v3-hairline) solid var(--v3-rule);
+}
+
+.racing-fact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  border-bottom: var(--v3-hairline) solid var(--v3-rule);
+  padding: 1rem 0;
+}
+
+.racing-fact dt {
+  color: var(--v3-muted);
+  font: .63rem/1.3 var(--v3-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.racing-fact dd {
+  margin: 0;
+  color: var(--v3-yellow);
+  font: .72rem/1.3 var(--v3-mono);
+  text-align: right;
+}
+
+.racing-launch {
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+.racing-launch-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 2rem;
+  border-top: var(--v3-hairline) solid var(--v3-rule);
+  border-bottom: var(--v3-hairline) solid var(--v3-rule);
+  padding-block: 1.5rem;
+}
+
+.racing-launch-copy {
+  max-width: 34rem;
+  margin: .8rem 0 0;
+  color: var(--v3-muted);
+  line-height: 1.65;
+}
+
+.racing-footer {
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 60rem) {
+  .racing-hero-grid,
+  .racing-proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .racing-video-figure {
+    order: -1;
+  }
+}
+
+@media (max-width: 44rem) {
+  .racing-brand-meta {
+    display: block;
+  }
+
+  .racing-nav-links {
+    gap: .65rem;
+  }
+
+  .racing-nav-links a:not(:last-child) {
+    display: none;
+  }
+
+  .racing-caption,
+  .racing-launch-grid {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .racing-launch-grid {
+    display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .racing-nav-links a {
+    transition: none;
+  }
+}

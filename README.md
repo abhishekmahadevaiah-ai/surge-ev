@@ -4,7 +4,9 @@ Static landing page variants for SURGE, a Tumkur-based EV charge point operator 
 
 ## Pages
 
-- [`index.html`](./index.html) — Industrial Grid, the primary landing page
+- [`index.html`](./index.html) — v4 Industrial Grid landing page with an interactive Karnataka network map and procedural 180kW charger hero
+- [`index-v3.html`](./index-v3.html) — noindex Route Ledger setup preview with local station filtering and launch ledger
+- [`electric-racing.html`](./electric-racing.html) — noindex BMW Formula E video preview
 - [`editorial-voltage.html`](./editorial-voltage.html) — Editorial Voltage variation
 - [`terminal-ops.html`](./terminal-ops.html) — Terminal Ops variation
 - [`contact.html`](./contact.html) — Validated partnership and support enquiry form
@@ -43,7 +45,22 @@ The workflow intentionally keeps credentials out of the repository. Cloudflare w
 
 - `robots.txt` points crawlers to [`sitemap.xml`](./sitemap.xml).
 - Submit `https://www.surgecharging.com/sitemap.xml` under **Google Search Console → Sitemaps** after verifying the `surgecharging.com` domain.
+- Use **URL Inspection → Request indexing** for the homepage after each meaningful launch update; code cannot guarantee a top ranking position.
+- Keep the Google Business Profile name, website, location, and category aligned with **SURGE Charging / Surge Electric Pvt Ltd**.
 - Keep **Always Use HTTPS** enabled in Cloudflare; [`_headers`](./_headers) adds HSTS and browser security headers.
 - Optional analytics are consent-gated. Add the production GA4 measurement ID to [`analytics-config.js`](./analytics-config.js) only after the analytics property is created.
 - App-store and social links intentionally route to [`contact.html`](./contact.html) until real production URLs are available.
 - The legal pages are launch templates and should be reviewed against the final operating entity, contact details, and applicable legal advice before public launch.
+
+## Google Form lead capture
+
+The v1 contact page supports a public Google Form response endpoint with a direct email fallback. No Google API credentials belong in the frontend.
+
+1. Create a Google Form for `Surge Electric Pvt Ltd` with required Name, Work email, Enquiry type, and Message questions.
+2. Publish it for public responses without requiring sign-in.
+3. Link the Form Responses tab to a `SURGE Website Leads` Google Sheet.
+4. Enable Google Forms response email notifications for the inbox configured in [`site-config.js`](./site-config.js).
+5. Copy the public `/formResponse` action and each question's `entry.<id>` value into [`google-form-config.js`](./google-form-config.js).
+6. Test the configured path and the unconfigured setup-required state on [`contact.html`](./contact.html). The form does not redirect to email; it stays on the page until a valid Google Form configuration is provided.
+
+The adapter stores only the public Google Form action and entry names. It never stores a Google API key, OAuth token, Sheet ID, or private credential.

@@ -212,6 +212,20 @@ a {
   font: .75rem/1.5 var(--surge-font-mono);
 }
 
+.legal-status[data-state="error"],
+.legal-status[data-state="fallback"] {
+  color: var(--surge-orange);
+}
+
+.legal-status[data-state="sending"] {
+  color: var(--surge-yellow);
+}
+
+.legal-button:disabled {
+  cursor: wait;
+  opacity: .65;
+}
+
 .legal-trap {
   position: absolute;
   width: 1px;

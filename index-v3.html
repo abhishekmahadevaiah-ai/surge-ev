@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SURGE v3 Route Ledger — 180kW EV charging preview</title>
+  <meta name="description" content="SURGE v3 Route Ledger preview for finding open 180kW charging bays across Karnataka.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#14161A">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./site-enhancements.css">
+  <link rel="stylesheet" href="./v3.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <script src="./site-config.js"></script>
+  <script src="./analytics-config.js"></script>
+  <script src="./site-enhancements.js" defer></script>
+  <script src="./v3-interactions.js" defer></script>
+</head>
+<body>
+  <div class="v3-page" id="v3-top">
+    <header class="v3-header" id="v3-header">
+      <nav class="v3-container v3-nav" aria-label="Primary navigation">
+        <a class="v3-brand v3-focus" href="#v3-top" aria-label="SURGE v3 preview home">
+          <span class="v3-brand-mark" aria-hidden="true"><i class="ti ti-bolt"></i></span>
+          <span class="v3-brand-word">SURGE</span>
+        </a>
+        <span class="v3-origin">Tumkur<br>/ Karnataka</span>
+        <button class="v3-menu-toggle v3-focus" type="button" data-v3-menu-toggle aria-controls="v3-nav-links" aria-expanded="false">
+          <span data-v3-menu-label>Menu</span>
+          <i class="ti ti-menu-2" aria-hidden="true"></i>
+        </button>
+        <div class="v3-nav-links" id="v3-nav-links">
+          <div class="v3-nav-group">
+            <span class="v3-nav-label v3-nav-label--charging">Charging</span>
+            <a class="v3-focus" href="#v3-route-finder">Find a charger</a>
+            <a class="v3-focus" href="#v3-charging-flow">How to charge</a>
+            <a class="v3-focus" href="#v3-rates">Rates</a>
+          </div>
+          <div class="v3-nav-group">
+            <span class="v3-nav-label v3-nav-label--business">Business</span>
+            <a class="v3-focus" href="#v3-business">Fleet charging</a>
+            <a class="v3-focus" href="#v3-business">Host a station</a>
+          </div>
+        </div>
+        <a class="v3-primary-action v3-header-action v3-focus" href="#v3-route-finder">
+          Find a charger
+          <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
+        </a>
+      </nav>
+    </header>
+
+    <section class="v3-station-board" id="v3-station-board" aria-label="Current named station availability">
+      <div class="v3-board-heading">
+        <span>Station status board</span>
+        <span>5 station updates / preview data</span>
+      </div>
+      <div class="v3-station-strip">
+        <button class="v3-station-item v3-focus" type="button" data-v3-board-station="koramangala" aria-pressed="false">
+          <span class="v3-station-mainline"><span class="v3-status-square" data-status="available" aria-hidden="true"></span><span class="v3-station-name">Koramangala 4th Block</span><span class="v3-station-count" data-status="available">2/4</span></span>
+          <span class="v3-station-state" data-status="available">Available</span>
+        </button>
+        <button class="v3-station-item v3-focus" type="button" data-v3-board-station="indiranagar" aria-pressed="false">
+          <span class="v3-station-mainline"><span class="v3-status-square" data-status="busy" aria-hidden="true"></span><span class="v3-station-name">Indiranagar</span><span class="v3-station-count" data-status="busy">0/2</span></span>
+          <span class="v3-station-state" data-status="busy">Busy</span>
+        </button>
+        <button class="v3-station-item v3-focus" type="button" data-v3-board-station="mysuru-highway" aria-pressed="false">
+          <span class="v3-station-mainline"><span class="v3-status-square" data-status="available" aria-hidden="true"></span><span class="v3-station-name">Mysuru Highway</span><span class="v3-station-count" data-status="available">3/6</span></span>
+          <span class="v3-station-state" data-status="available">Available</span>
+        </button>
+        <button class="v3-station-item v3-focus" type="button" data-v3-board-station="hosur-road" aria-pressed="false">
+          <span class="v3-station-mainline"><span class="v3-status-square" data-status="busy" aria-hidden="true"></span><span class="v3-station-name">Hosur Road</span><span class="v3-station-count" data-status="busy">1/4</span></span>
+          <span class="v3-station-state" data-status="busy">Busy</span>
+        </button>
+        <button class="v3-station-item v3-focus" type="button" data-v3-board-station="whitefield" aria-pressed="false">
+          <span class="v3-station-mainline"><span class="v3-status-square" data-status="available" aria-hidden="true"></span><span class="v3-station-name">Whitefield</span><span class="v3-station-count" data-status="available">4/6</span></span>
+          <span class="v3-station-state" data-status="available">Available</span>
+        </button>
+      </div>
+    </section>
+
+    <main id="v3-main-content">
+      <section class="v3-route-section" id="v3-route-finder" aria-labelledby="v3-route-title">
+        <div class="v3-container">
+          <div class="v3-route-meta">
+            <span>SURGE / Karnataka route finder</span>
+            <span class="v3-route-live">Network reporting / local preview</span>
+          </div>
+          <div class="v3-route-grid">
+            <div class="v3-finder-copy">
+              <p class="v3-kicker">01 / Before you leave</p>
+              <h1 class="v3-hero-title" id="v3-route-title">Find an open<br><span>180kW bay</span><br>before you leave.</h1>
+              <p class="v3-hero-copy">Search the SURGE network by destination or route. Check open bays and current rates before your stop.</p>
+              <form class="v3-finder-form" id="v3-route-search" role="search">
+                <label class="v3-field-label" for="v3-route-query">Search your route
+                  <input class="v3-text-input" id="v3-route-query" name="route" type="search" placeholder="e.g. Mysuru Highway" autocomplete="off">
+                </label>
+                <div class="v3-finder-actions">
+                  <button class="v3-secondary-action v3-focus" type="button" data-v3-use-location>
+                    <i class="ti ti-current-location" aria-hidden="true"></i>
+                    Use my location
+                  </button>
+                  <button class="v3-primary-action v3-focus" type="submit">
+                    <i class="ti ti-route" aria-hidden="true"></i>
+                    Show open bays
+                  </button>
+                </div>
+                <p class="v3-finder-status" id="v3-route-status" role="status" aria-live="polite">Showing 5 named stations. Select a station to view open bays.</p>
+              </form>
+              <div class="v3-selected-result" id="v3-selected-result" tabindex="-1" aria-live="polite">
+                <p class="v3-selected-label">Selected station</p>
+                <h2 class="v3-selected-name" id="v3-selected-name">Mysuru Highway</h2>
+                <p class="v3-selected-meta"><span class="v3-selected-open" id="v3-selected-open">3/6 available</span><span id="v3-selected-spec">CCS2 / 180kW</span></p>
+              </div>
+              <div class="v3-result-list" aria-label="Named station results">
+                <button class="v3-result-row v3-focus" type="button" data-v3-result="koramangala" aria-pressed="false">
+                  <span><span class="v3-result-name">Koramangala 4th Block</span><span class="v3-result-detail">CCS2 / 180kW</span></span><span class="v3-result-open" data-status="available">2/4 available</span>
+                </button>
+                <button class="v3-result-row v3-focus" type="button" data-v3-result="indiranagar" aria-pressed="false">
+                  <span><span class="v3-result-name">Indiranagar</span><span class="v3-result-detail">CCS2 / 180kW</span></span><span class="v3-result-open" data-status="busy">0/2 busy</span>
+                </button>
+                <button class="v3-result-row v3-focus" type="button" data-v3-result="mysuru-highway" aria-pressed="false">
+                  <span><span class="v3-result-name">Mysuru Highway</span><span class="v3-result-detail">CCS2 / 180kW</span></span><span class="v3-result-open" data-status="available">3/6 available</span>
+                </button>
+                <button class="v3-result-row v3-focus" type="button" data-v3-result="hosur-road" aria-pressed="false">
+                  <span><span class="v3-result-name">Hosur Road</span><span class="v3-result-detail">CCS2 / 180kW</span></span><span class="v3-result-open" data-status="busy">1/4 busy</span>
+                </button>
+                <button class="v3-result-row v3-focus" type="button" data-v3-result="whitefield" aria-pressed="false">
+                  <span><span class="v3-result-name">Whitefield</span><span class="v3-result-detail">CCS2 / 180kW</span></span><span class="v3-result-open" data-status="available">4/6 available</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="v3-scope-panel">
+              <div class="v3-scope-heading"><span>Oscilloscope / Bay Array 01</span><strong>● Live signal</strong></div>
+              <div class="v3-scope-frame">
+                <div class="v3-scope-output">180<span>kW</span></div>
+                <div class="v3-scope-status">Bay 01 <strong>Online</strong><br>Grid <em>Stable</em></div>
+                <svg class="v3-scope-wave" viewBox="0 0 700 330" role="img" aria-labelledby="v3-scope-title v3-scope-desc" preserveAspectRatio="none">
+                  <title id="v3-scope-title">Live charging oscilloscope waveform</title>
+                  <desc id="v3-scope-desc">A voltage-yellow charging signal over a charcoal grid with a copper secondary trace.</desc>
+                  <path class="v3-scope-grid" d="M0 164H700M0 82H700M0 246H700M88 0V330M176 0V330M264 0V330M352 0V330M440 0V330M528 0V330M616 0V330"></path>
+                  <path class="v3-scope-waveform" pathLength="1" d="M0 164 C35 164 42 72 86 72 C130 72 139 254 183 254 C227 254 237 92 282 92 C327 92 335 215 380 215 C425 215 435 119 480 119 C525 119 532 184 575 184 C618 184 635 148 700 148"></path>
+                  <path class="v3-scope-secondary" d="M0 164 C55 164 77 138 123 138 C166 138 188 190 236 190 C280 190 302 133 350 133 C392 133 423 171 468 171 C520 171 544 145 594 145 C633 145 655 161 700 161"></path>
+                  <circle class="v3-scope-dot" cx="480" cy="119" r="6"></circle>
+                  <circle class="v3-scope-ring" cx="480" cy="119" r="13"></circle>
+                </svg>
+                <div class="v3-scope-metrics"><span>00:00:00</span><span>Voltage / 480V</span><span>Load / 86%</span></div>
+              </div>
+              <div class="v3-scope-footer"><span>CCS2 / protocol ok</span><span>Temp / 31°</span><strong>● stable</strong></div>
+            </div>
+
+            <aside class="v3-metric-ledger" aria-label="Charging capability summary">
+              <p class="v3-metric-title">At the bay</p>
+              <dl class="v3-metric-list">
+                <div class="v3-metric-item"><dt class="v3-metric-value">180kW</dt><dd class="v3-metric-label">per charger</dd></div>
+                <div class="v3-metric-item"><dt class="v3-metric-value">~18min</dt><dd class="v3-metric-label">0–80% charge</dd></div>
+                <div class="v3-metric-item"><dt class="v3-metric-value">24/7</dt><dd class="v3-metric-label">support</dd></div>
+              </dl>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="v3-container v3-network-ledger" id="v3-network-ledger" aria-labelledby="v3-network-title">
+        <div>
+          <p class="v3-kicker">02 / Network footprint</p>
+          <h2 class="v3-section-title" id="v3-network-title">A network built to keep routes open.</h2>
+          <p class="v3-section-copy">SURGE is expanding from Tumkur across Karnataka’s daily roads and highway stops.</p>
+        </div>
+        <div class="v3-ledger-rows" aria-label="Network coverage figures">
+          <div class="v3-ledger-row"><span class="v3-ledger-number">500+</span><span class="v3-ledger-label">locations</span><span class="v3-ledger-index">01</span></div>
+          <div class="v3-ledger-row"><span class="v3-ledger-number">1000+</span><span class="v3-ledger-label">charge points</span><span class="v3-ledger-index">02</span></div>
+          <div class="v3-ledger-row"><span class="v3-ledger-number">90+</span><span class="v3-ledger-label">stations building</span><span class="v3-ledger-index">03</span></div>
+        </div>
+        <aside class="v3-ledger-aside">Karnataka / network expansion</aside>
+      </section>
+
+      <section class="v3-container v3-flow-section" id="v3-charging-flow" aria-labelledby="v3-flow-title">
+        <div class="v3-section-heading-row">
+          <div><p class="v3-kicker">03 / At the charger</p><h2 class="v3-section-title" id="v3-flow-title">Locate. Plug. Charge.</h2></div>
+          <p class="v3-heading-note">No guesswork. Find an open bay, connect the CCS2 cable, and leave with a clear session signal.</p>
+        </div>
+        <ol class="v3-flow">
+          <li class="v3-flow-step">
+            <div class="v3-flow-topline"><span class="v3-flow-icon" aria-hidden="true"><i class="ti ti-map-pin"></i></span><span class="v3-flow-number">01</span></div>
+            <h3 class="v3-flow-title">Locate</h3><p class="v3-flow-copy">Find an open SURGE charger near your route.</p><p class="v3-flow-spec">Live map / open bays</p>
+          </li>
+          <li class="v3-flow-step">
+            <div class="v3-flow-topline"><span class="v3-flow-icon" aria-hidden="true"><i class="ti ti-plug-connected"></i></span><span class="v3-flow-number">02</span></div>
+            <h3 class="v3-flow-title">Plug</h3><p class="v3-flow-copy">Connect your CCS2 cable at the bay.</p><p class="v3-flow-spec">CCS2 / 180kW DC</p>
+          </li>
+          <li class="v3-flow-step">
+            <div class="v3-flow-topline"><span class="v3-flow-icon" aria-hidden="true"><i class="ti ti-bolt"></i></span><span class="v3-flow-number">03</span></div>
+            <h3 class="v3-flow-title">Charge</h3><p class="v3-flow-copy">Pay in the app and leave when your session is complete.</p><p class="v3-flow-spec">Auto-pay / drive on</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="v3-container v3-rates-section" id="v3-rates" aria-labelledby="v3-rates-title">
+        <div class="v3-rates-header">
+          <div><p class="v3-kicker">04 / Rates</p><h2 class="v3-section-title" id="v3-rates-title">Rates you can check before you charge.</h2></div>
+          <p class="v3-rates-note">All rates shown per kWh</p>
+        </div>
+        <p class="v3-table-helper">Swipe to compare rates</p>
+        <div class="v3-table-wrap">
+          <table class="v3-rate-table">
+            <caption class="v3-sr-only">SURGE charging rates per kilowatt-hour</caption>
+            <thead><tr><th scope="col">Rate</th><th scope="col">Standard</th><th class="v3-fleet-column" scope="col">Fleet<span class="v3-fleet-caption">For daily routes</span></th><th scope="col">Peak</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Price</th><td><strong>₹21/kWh</strong></td><td class="v3-fleet-column"><strong>₹19–20/kWh</strong></td><td><strong>₹22–24/kWh</strong></td></tr>
+              <tr><th scope="row">Use</th><td>Public charging</td><td class="v3-fleet-column">Daily routes</td><td>High demand</td></tr>
+              <tr><th scope="row">Terms</th><td>Pay as you go</td><td class="v3-fleet-column">Volume-based access</td><td>Current rate in app</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <a class="v3-inline-link v3-focus" href="/contact?topic=Fleet%20partnership">Ask about fleet access ↗</a>
+      </section>
+
+      <section class="v3-reliability-section" id="v3-reliability" aria-labelledby="v3-reliability-title" data-v3-reliability>
+        <div class="v3-container">
+          <div class="v3-reliability-head">
+            <div><p class="v3-kicker">05 / Hardware proof</p><h2 class="v3-section-title" id="v3-reliability-title">The hardware behind the stop.</h2></div>
+            <svg class="v3-trace" viewBox="0 0 520 80" role="img" aria-label="One-time reliability signal trace" preserveAspectRatio="none">
+              <path class="v3-trace-grid" d="M0 20H520M0 40H520M0 60H520M65 0V80M130 0V80M195 0V80M260 0V80M325 0V80M390 0V80M455 0V80"></path>
+              <path class="v3-reliability-trace" pathLength="1" d="M0 42C35 42 37 24 65 24S94 57 130 57S159 31 195 31S226 48 260 48S288 18 325 18S356 54 390 54S425 34 455 34S490 42 520 42"></path>
+            </svg>
+          </div>
+          <div class="v3-reliability-grid">
+            <div class="v3-engineering-fact"><p class="v3-fact-value">500kVA</p><p class="v3-fact-label">HT connection</p><p class="v3-fact-copy">Capacity designed to support fast sessions without turning two bays into one queue.</p></div>
+            <dl class="v3-spec-list">
+              <div class="v3-spec-row"><dt>Independent bays</dt><dd>2 × 180kW</dd></div>
+              <div class="v3-spec-row"><dt>Connector standard</dt><dd>CCS2</dd></div>
+              <div class="v3-spec-row"><dt>Monitoring</dt><dd>24/7</dd></div>
+              <div class="v3-spec-row"><dt>Per charger output</dt><dd>180kW</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="v3-business-section" id="v3-business" aria-labelledby="v3-business-title">
+        <div class="v3-container v3-business-grid">
+          <div class="v3-business-panel v3-business-panel--fleet">
+            <p class="v3-business-label">Fleet charging</p>
+            <h2 class="v3-business-title" id="v3-business-title">Keep daily routes moving.</h2>
+            <p class="v3-business-copy">Volume-based charging access for fleet operators running regular routes.</p>
+            <a class="v3-primary-action v3-business-link v3-focus" href="/contact?topic=Fleet%20partnership">Ask about fleet access <i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
+          </div>
+          <div class="v3-business-panel v3-business-panel--host">
+            <p class="v3-business-label">Host a station</p>
+            <h2 class="v3-business-title">Put a fast charger on your site.</h2>
+            <p class="v3-business-copy">Talk to SURGE about hosting a station.</p>
+            <a class="v3-primary-action v3-business-link v3-focus" href="/contact?topic=Host%20a%20station">Discuss site hosting <i class="ti ti-building-factory-2" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="v3-container v3-contact-section" id="v3-contact" aria-labelledby="v3-contact-title">
+        <div class="v3-contact-grid">
+          <div class="v3-contact-details">
+            <div><p class="v3-kicker">06 / Operations desk</p><h2 class="v3-section-title" id="v3-contact-title">Talk to SURGE.</h2><p class="v3-contact-copy">For charging, fleet, and site enquiries. The existing contact route handles the full enquiry form.</p></div>
+            <div class="v3-contact-list"><a href="#" data-surge-contact-email>contact desk</a><span>Surge Electric Pvt Ltd</span><span>Tumkur, Karnataka</span></div>
+          </div>
+          <div class="v3-contact-route"><p class="v3-contact-route-copy">Choose the right route for your enquiry. Fleet and hosting links above open the form with the topic preselected.</p><a class="v3-primary-action v3-focus" href="/contact">Contact SURGE <i class="ti ti-arrow-up-right" aria-hidden="true"></i></a></div>
+        </div>
+      </section>
+
+      <section class="v3-container v3-readiness-section" id="v3-launch-readiness" aria-labelledby="v3-readiness-title">
+        <details class="v3-readiness-disclosure">
+          <summary class="v3-readiness-summary v3-focus"><span><span class="v3-kicker">07 / Release evidence</span><strong id="v3-readiness-title">Launch readiness / 20 checks</strong></span><span class="v3-readiness-toggle" aria-hidden="true">Open ledger +</span></summary>
+          <div class="v3-readiness-body">
+            <p class="v3-readiness-intro">Concrete launch surfaces already present in this repository, with preview-only items and owner input called out rather than implied.</p>
+            <div class="v3-readiness-group"><h3>Foundation</h3><ol class="v3-readiness-list">
+              <li><span>01 / Custom 404 page</span><a href="/404.html">IN PLACE ↗</a></li>
+              <li><span>02 / Meta title per page</span><span>IN PLACE</span></li>
+              <li><span>03 / Meta description per page</span><span>IN PLACE</span></li>
+              <li><span>04 / CTA above the fold</span><span>IN PLACE</span></li>
+              <li><span>05 / Favicon set</span><a href="/favicon.svg">IN PLACE ↗</a></li>
+              <li><span>06 / robots.txt file</span><a href="/robots.txt">IN PLACE ↗</a></li>
+              <li><span>07 / sitemap.xml</span><a href="/sitemap.xml">IN PLACE ↗</a></li>
+              <li><span>08 / Open Graph image</span><a href="/og-image.svg">IN PLACE ↗</a></li>
+            </ol></div>
+            <div class="v3-readiness-group"><h3>Responsive behavior</h3><ol class="v3-readiness-list" start="9">
+              <li><span>09 / Alt text on every image</span><span>PREVIEW / SVG + VIDEO</span></li>
+              <li><span>10 / Mobile breakpoints</span><span>IN PLACE</span></li>
+              <li><span>11 / Sticky mobile CTA</span><span>PREVIEW / V3</span></li>
+              <li><span>12 / Loading states</span><span>IN PLACE</span></li>
+              <li><span>13 / Form error states</span><a href="/contact">IN PLACE ↗</a></li>
+              <li><span>14 / Thank-you state</span><a href="/contact">INLINE / CONTACT ↗</a></li>
+            </ol></div>
+            <div class="v3-readiness-group"><h3>Trust and policy</h3><ol class="v3-readiness-list" start="15">
+              <li><span>15 / Privacy policy page</span><a href="/privacy">IN PLACE ↗</a></li>
+              <li><span>16 / Terms and conditions</span><a href="/terms">IN PLACE ↗</a></li>
+              <li><span>17 / Cookie banner</span><span>IN PLACE</span></li>
+              <li><span>18 / Analytics installed</span><span>IN PLACE / CONSENT-GATED</span></li>
+              <li><span>19 / Real contact address</span><span>OWNER INPUT / TUMKUR ONLY</span></li>
+            </ol></div>
+            <div class="v3-readiness-group"><h3>Media</h3><ol class="v3-readiness-list" start="20">
+              <li><span>20 / Compressed media</span><a href="/electric-racing.html">PREVIEW / EXTERNAL VIDEO ↗</a></li>
+            </ol></div>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <footer class="v3-container v3-footer" id="v3-footer">
+      <div class="v3-footer-top"><div><a class="v3-brand v3-focus" href="#v3-top" aria-label="Back to SURGE v3 preview top"><span class="v3-brand-mark" aria-hidden="true"><i class="ti ti-bolt"></i></span><span class="v3-brand-word">SURGE</span></a><p class="v3-footer-statement">Fast charging for Karnataka’s roads and businesses.</p></div><span class="v3-kicker">V3 / setup preview</span></div>
+      <nav class="v3-footer-nav" aria-label="Footer navigation"><a class="v3-focus" href="#v3-route-finder">Find a charger</a><a class="v3-focus" href="#v3-rates">Rates</a><a class="v3-focus" href="#v3-business">Fleet charging</a><a class="v3-focus" href="#v3-business">Host a station</a><a class="v3-focus" href="./electric-racing.html">Racing signal</a><a class="v3-focus" href="/privacy">Privacy policy</a><a class="v3-focus" href="/terms">Terms &amp; conditions</a></nav>
+      <div class="v3-footer-meta"><span>© 2026 Surge Electric Pvt Ltd</span><span>Tumkur, Karnataka</span><a class="v3-focus" href="#" data-surge-contact-email>contact desk</a></div>
+    </footer>
+  </div>
+  <a class="v3-mobile-cta v3-primary-action v3-focus" href="#v3-route-finder">Find a charger <i class="ti ti-route" aria-hidden="true"></i></a>
+</body>
+</html>

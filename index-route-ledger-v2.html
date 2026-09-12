@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8">
+  <meta name="kombai-design-canvas" content="true">
+  
+  
+  
+  <script src="./site-config.js"></script>
+  <script src="https://unpkg.com/@tailwindcss/browser@4.3.3/dist/index.global.js" integrity="sha384-2ql948lIdLcGEE0/qxNiudyTjgauA3RDJERu5xW75kFCvSl5a9odyQYCb6tEjnmB" crossorigin="anonymous"></script>
+  
+  <style>html, body { margin: 0; padding: 0; } #root { display: contents; }</style>
+</head><body>
+  <div id="root"><style>
+    @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+  @import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css');
+  :root {
+    --surge-ink: #14161A;
+    --surge-surface: #1C1E23;
+    --surge-rule: #2A2D35;
+    --surge-paper: #F0F0EA;
+    --surge-yellow: #FFC530;
+    --surge-orange: #FF5A1F;
+    --surge-green: #B7D96B;
+  }
+  .surge-route-page { font-family: 'IBM Plex Sans', sans-serif; background: var(--surge-ink); color: var(--surge-paper); }
+  .surge-display { font-family: 'Big Shoulders Display', sans-serif; }
+  .surge-mono { font-family: 'IBM Plex Mono', monospace; }
+  .focus-ring:focus-visible { outline: 2px solid var(--surge-yellow); outline-offset: 4px; }
+  .route-draw, .trace-draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .station-row:hover { background: var(--surge-ink); }
+  .station-row:hover .station-name { color: var(--surge-yellow); }
+  .ledger-link:hover { color: var(--surge-yellow); }
+  .secondary-link:hover { color: var(--surge-orange); }
+  .yellow-action:hover { background: #F0F0EA; }
+  .dark-action:hover { color: var(--surge-yellow); border-color: var(--surge-yellow); }
+  .finder-input:focus { outline: 2px solid var(--surge-yellow); outline-offset: 4px; }
+  .form-input:focus { border-color: var(--surge-yellow); outline: 2px solid var(--surge-yellow); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    .route-draw, .trace-draw { stroke-dashoffset: 0; }
+  }
+</style>
+<div class="surge-route-page min-h-screen overflow-x-clip" data-kid="1" id="route-ledger-top">
+    <header class="border-b border-[#2A2D35] bg-[#14161A]" data-kid="1-1">
+        <nav aria-label="Primary navigation" class="mx-auto flex max-w-[1320px] flex-wrap items-center gap-x-8 gap-y-4 px-6 py-5 lg:px-10" data-kid="1-1-1">
+            <a aria-label="SURGE home" class="focus-ring flex shrink-0 items-center gap-3" data-kid="1-1-1-1" href="#route-ledger-top">
+                <span aria-hidden="true" class="grid h-10 w-10 place-items-center rounded-[2px] bg-[#FFC530] text-[20px] text-[#14161A]" data-kid="1-1-1-1-1">
+                    <i class="ti ti-bolt" data-kid="1-1-1-1-1-1">
+                    </i>
+                </span>
+                <span class="surge-display text-[2.4rem] font-extrabold uppercase leading-none tracking-[-.03em]" data-kid="1-1-1-1-2">
+                    SURGE
+                </span>
+            </a>
+            <span class="surge-mono border-l border-[#2A2D35] pl-4 text-[10px] uppercase leading-4 tracking-[.16em] text-[#F0F0EA]/60" data-kid="1-1-1-2">
+                Tumkur
+                <br data-kid="1-1-1-2-1"/>
+                / Karnataka
+            </span>
+            <div class="ml-auto flex flex-wrap items-center justify-end gap-x-6 gap-y-3 surge-mono text-[10px] uppercase tracking-[.12em] text-[#F0F0EA]/65" data-kid="1-1-1-3">
+                <div class="flex items-center gap-3" data-kid="1-1-1-3-1">
+                    <span class="font-semibold text-[#FFC530]" data-kid="1-1-1-3-1-1" data-name="charging status indicator label">
+                        Charging
+                    </span>
+                    <a class="focus-ring ledger-link" data-kid="1-1-1-3-1-2" href="#finder">
+                        Find a charger
+                    </a>
+                    <a class="focus-ring ledger-link" data-kid="1-1-1-3-1-3" href="#how">
+                        How to charge
+                    </a>
+                    <a class="focus-ring ledger-link" data-kid="1-1-1-3-1-4" href="#rates">
+                        Rates
+                    </a>
+                </div>
+                <span aria-hidden="true" class="hidden h-5 w-px bg-[#2A2D35] md:block" data-kid="1-1-1-3-2">
+                </span>
+                <div class="flex items-center gap-3" data-kid="1-1-1-3-3">
+                    <span class="font-semibold text-[#FF5A1F]" data-kid="1-1-1-3-3-1">
+                        Business
+                    </span>
+                    <a class="focus-ring secondary-link" data-kid="1-1-1-3-3-2" href="#business">
+                        Fleet charging
+                    </a>
+                    <a class="focus-ring secondary-link" data-kid="1-1-1-3-3-3" href="#business">
+                        Host a station
+                    </a>
+                </div>
+                <a class="focus-ring yellow-action inline-flex items-center gap-3 rounded-[2px] bg-[#FFC530] px-4 py-3 font-semibold text-[#14161A]" data-kid="1-1-1-3-4" href="#contact">
+                    Find a charger
+                    <span aria-hidden="true" class="text-[17px]" data-kid="1-1-1-3-4-1">
+                        <i class="ti ti-arrow-up-right" data-kid="1-1-1-3-4-1-1">
+                        </i>
+                    </span>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <section aria-label="Current station availability" class="border-b border-[#2A2D35] bg-[#1C1E23]" data-kid="1-2">
+        <div class="mx-auto grid max-w-[1320px] grid-cols-1 divide-y divide-[#2A2D35] sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-5 lg:divide-x lg:divide-y-0" data-kid="1-2-1">
+            <div class="station-row px-6 py-4 lg:px-5" data-kid="1-2-1-1">
+                <div class="flex items-center justify-between gap-3 surge-mono text-[10px] uppercase tracking-[.11em]" data-kid="1-2-1-1-1">
+                    <span class="station-name truncate text-[#F0F0EA]/75" data-kid="1-2-1-1-1-1">
+                        Koramangala 4th Block
+                    </span>
+                    <span class="text-[#B7D96B]" data-kid="1-2-1-1-1-2">
+                        2/4
+                    </span>
+                </div>
+                <p class="mt-2 surge-mono text-[9px] uppercase tracking-[.14em] text-[#B7D96B]" data-kid="1-2-1-1-2">
+                    Available
+                </p>
+            </div>
+            <div class="station-row px-6 py-4 lg:px-5" data-kid="1-2-1-2">
+                <div class="flex items-center justify-between gap-3 surge-mono text-[10px] uppercase tracking-[.11em]" data-kid="1-2-1-2-1">
+                    <span class="station-name truncate text-[#F0F0EA]/75" data-kid="1-2-1-2-1-1">
+                        Indiranagar
+                    </span>
+                    <span class="text-[#FF5A1F]" data-kid="1-2-1-2-1-2">
+                        0/2
+                    </span>
+                </div>
+                <p class="mt-2 surge-mono text-[9px] uppercase tracking-[.14em] text-[#FF5A1F]" data-kid="1-2-1-2-2">
+                    Busy
+                </p>
+            </div>
+            <div class="station-row bg-[#14161A] px-6 py-4 lg:px-5" data-kid="1-2-1-3">
+                <div class="flex items-center justify-between gap-3 surge-mono text-[10px] uppercase tracking-[.11em]" data-kid="1-2-1-3-1">
+                    <span class="station-name truncate text-[#FFC530]" data-kid="1-2-1-3-1-1">
+                        Mysuru Highway
+                    </span>
+                    <span class="text-[#FFC530]" data-kid="1-2-1-3-1-2">
+                        3/6
+                    </span>
+                </div>
+                <p class="mt-2 surge-mono text-[9px] uppercase tracking-[.14em] text-[#FFC530]" data-kid="1-2-1-3-2">
+                    Selected / Available
+                </p>
+            </div>
+            <div class="station-row px-6 py-4 lg:px-5" data-kid="1-2-1-4">
+                <div class="flex items-center justify-between gap-3 surge-mono text-[10px] uppercase tracking-[.11em]" data-kid="1-2-1-4-1">
+                    <span class="station-name truncate text-[#F0F0EA]/75" data-kid="1-2-1-4-1-1">
+                        Hosur Road
+                    </span>
+                    <span class="text-[#FF5A1F]" data-kid="1-2-1-4-1-2">
+                        1/4
+                    </span>
+                </div>
+                <p class="mt-2 surge-mono text-[9px] uppercase tracking-[.14em] text-[#FF5A1F]" data-kid="1-2-1-4-2">
+                    Busy
+                </p>
+            </div>
+            <div class="station-row px-6 py-4 lg:px-5" data-kid="1-2-1-5">
+                <div class="flex items-center justify-between gap-3 surge-mono text-[10px] uppercase tracking-[.11em]" data-kid="1-2-1-5-1">
+                    <span class="station-name truncate text-[#F0F0EA]/75" data-kid="1-2-1-5-1-1">
+                        Whitefield
+                    </span>
+                    <span class="text-[#B7D96B]" data-kid="1-2-1-5-1-2">
+                        4/6
+                    </span>
+                </div>
+                <p class="mt-2 surge-mono text-[9px] uppercase tracking-[.14em] text-[#B7D96B]" data-kid="1-2-1-5-2">
+                    Available
+                </p>
+            </div>
+        </div>
+    </section>
+    <main data-kid="1-3">
+        <section aria-labelledby="hero-title" class="border-b border-[#2A2D35] bg-[#1C1E23]" data-kid="1-3-1" id="finder">
+            <div class="mx-auto max-w-[1320px] px-6 py-8 lg:px-10 lg:py-10" data-kid="1-3-1-1">
+                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-[#2A2D35] pb-4 surge-mono text-[10px] uppercase tracking-[.17em] text-[#F0F0EA]/55" data-kid="1-3-1-1-1">
+                    <span data-kid="1-3-1-1-1-1">
+                        SURGE / Karnataka route finder
+                    </span>
+                    <span class="text-[#B7D96B]" data-kid="1-3-1-1-1-2">
+                        Network reporting / live
+                    </span>
+                </div>
+                <div class="grid gap-10 py-12 lg:grid-cols-[.88fr_1.12fr] lg:gap-16 lg:py-16" data-kid="1-3-1-1-2">
+                    <div class="flex flex-col justify-between" data-kid="1-3-1-1-2-1">
+                        <div data-kid="1-3-1-1-2-1-1">
+                            <p class="surge-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="1-3-1-1-2-1-1-1">
+                                01 / Before you leave
+                            </p>
+                            <h1 class="surge-display mt-6 max-w-[620px] text-[clamp(4.4rem,8.5vw,8.7rem)] font-extrabold uppercase leading-[.79] tracking-[-.055em] text-[#F0F0EA]" data-kid="1-3-1-1-2-1-1-2" id="hero-title">
+                                Find an open
+                                <br data-kid="1-3-1-1-2-1-1-2-1"/>
+                                <span class="text-[#FFC530]" data-kid="1-3-1-1-2-1-1-2-2">
+                                    180kW bay
+                                </span>
+                                <br data-kid="1-3-1-1-2-1-1-2-3"/>
+                                before you leave.
+                            </h1>
+                            <p class="mt-8 max-w-[520px] text-lg leading-8 text-[#F0F0EA]/70" data-kid="1-3-1-1-2-1-1-3">
+                                Search the SURGE network by destination or route. Check open bays and current rates before your stop.
+                            </p>
+                        </div>
+                        <div class="mt-12 border-l-2 border-[#FF5A1F] pl-4 surge-mono text-[10px] uppercase leading-6 tracking-[.13em] text-[#F0F0EA]/55" data-kid="1-3-1-1-2-1-2">
+                            <span class="text-[#FFC530]" data-kid="1-3-1-1-2-1-2-1">
+                                Route ledger / 001
+                            </span>
+                            <br data-kid="1-3-1-1-2-1-2-2"/>
+                            Built for Karnataka roads, routines and rush.
+                        </div>
+                    </div>
+                    <div class="relative min-h-[480px] overflow-hidden border border-[#2A2D35] bg-[#14161A] p-5 lg:min-h-[560px] lg:p-7" data-kid="1-3-1-1-2-2">
+                        <div aria-hidden="true" class="absolute inset-0 opacity-80" data-kid="1-3-1-1-2-2-1">
+                            <svg class="h-full w-full" data-kid="1-3-1-1-2-2-1-1" preserveaspectratio="none" viewbox="0 0 720 560">
+                                <path d="M22 478H170L244 404L330 410L402 318L510 330L602 214L710 110" fill="none" stroke="#2A2D35" stroke-width="2">
+                                </path>
+                                <path d="M82 74L170 154L264 136L330 232L402 318L470 278L602 214L676 244" fill="none" stroke="#2A2D35" stroke-width="2">
+                                </path>
+                                <path d="M30 300L140 294L204 230L330 232L408 174L520 178L676 74" fill="none" stroke="#2A2D35" stroke-width="2">
+                                </path>
+                                <path class="route-draw" d="M22 478H170L244 404L330 410L402 318L510 330L602 214L710 110" fill="none" pathlength="1" stroke="#FF5A1F" stroke-width="4">
+                                </path>
+                                <path d="M82 74L170 154L264 136L330 232L402 318L470 278L602 214L676 244" fill="none" stroke="#FFC530" stroke-dasharray="2 12" stroke-width="2">
+                                </path>
+                                <g fill="#14161A" stroke="#2A2D35" stroke-width="2">
+                                    <rect height="20" width="20" x="72" y="64">
+                                    </rect>
+                                    <rect height="20" width="20" x="160" y="144">
+                                    </rect>
+                                    <rect height="20" width="20" x="254" y="126">
+                                    </rect>
+                                    <rect height="20" width="20" x="320" y="222">
+                                    </rect>
+                                    <rect height="20" width="20" x="392" y="308">
+                                    </rect>
+                                    <rect height="20" width="20" x="500" y="320">
+                                    </rect>
+                                    <rect height="20" width="20" x="592" y="204">
+                                    </rect>
+                                </g>
+                                <rect fill="#FFC530" height="20" stroke="#FFC530" stroke-width="2" width="20" x="592" y="204">
+                                </rect>
+                                <circle cx="602" cy="214" fill="none" r="34" stroke="#FFC530" stroke-width="1">
+                                </circle>
+                            </svg>
+                        </div>
+                        <div class="relative z-10 flex h-full flex-col justify-between" data-kid="1-3-1-1-2-2-2">
+                            <div class="flex items-start justify-between surge-mono text-[10px] uppercase tracking-[.14em] text-[#F0F0EA]/50" data-kid="1-3-1-1-2-2-2-1">
+                                <span data-kid="1-3-1-1-2-2-2-1-1">
+                                    Route lattice / Karnataka
+                                </span>
+                                <span class="text-[#B7D96B]" data-kid="1-3-1-1-2-2-2-1-2">
+                                    ● signal nominal
+                                </span>
+                            </div>
+                            <div class="ml-auto max-w-[250px] border border-[#FFC530] bg-[#1C1E23] p-4" data-kid="1-3-1-1-2-2-2-2">
+                                <p class="surge-mono text-[9px] uppercase tracking-[.16em] text-[#FFC530]" data-kid="1-3-1-1-2-2-2-2-1">
+                                    Selected station / 04
+                                </p>
+                                <p class="surge-display mt-3 text-4xl uppercase leading-none" data-kid="1-3-1-1-2-2-2-2-2">
+                                    Mysuru
+                                    <br data-kid="1-3-1-1-2-2-2-2-2-1"/>
+                                    Highway
+                                </p>
+                                <div class="mt-5 grid grid-cols-2 border-t border-[#2A2D35] pt-3 surge-mono text-[9px] uppercase tracking-[.12em]" data-kid="1-3-1-1-2-2-2-2-3">
+                                    <span class="text-[#B7D96B]" data-kid="1-3-1-1-2-2-2-2-3-1">
+                                        3/6 available
+                                    </span>
+                                    <span class="text-right text-[#F0F0EA]/60" data-kid="1-3-1-1-2-2-2-2-3-2">
+                                        CCS2 / 180kW
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-3 border-t border-[#2A2D35] pt-4 surge-mono text-[9px] uppercase tracking-[.12em] text-[#F0F0EA]/55" data-kid="1-3-1-1-2-2-2-3">
+                                <span data-kid="1-3-1-1-2-2-2-3-1">
+                                    KA / route 01
+                                </span>
+                                <span class="text-center" data-kid="1-3-1-1-2-2-2-3-2">
+                                    0.8 sec scan
+                                </span>
+                                <span class="text-right text-[#FFC530]" data-kid="1-3-1-1-2-2-2-3-3">
+                                    open bays first
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form aria-label="Search the SURGE network" class="border border-[#2A2D35] bg-[#14161A] p-4 lg:p-5" data-kid="1-3-1-1-3" id="route-search">
+                    <div class="grid gap-4 lg:grid-cols-[1fr_auto_auto_auto] lg:items-end" data-kid="1-3-1-1-3-1">
+                        <label class="block" data-kid="1-3-1-1-3-1-1" for="destination">
+                            <span class="surge-mono text-[10px] uppercase tracking-[.16em] text-[#FFC530]" data-kid="1-3-1-1-3-1-1-1">
+                                Search your route
+                            </span>
+                            <input class="finder-input mt-3 block w-full border-b border-[#F0F0EA]/35 bg-transparent px-0 py-3 text-lg text-[#F0F0EA] placeholder:text-[#F0F0EA]/35" data-kid="1-3-1-1-3-1-1-2" id="destination" name="destination" placeholder="e.g. Mysuru Highway" type="search"/>
+                        </label>
+                        <button class="focus-ring inline-flex items-center justify-center gap-2 border border-[#2A2D35] px-4 py-3 surge-mono text-[10px] uppercase tracking-[.12em] text-[#F0F0EA]/75 hover:border-[#FFC530] hover:text-[#FFC530]" data-kid="1-3-1-1-3-1-2" id="use-location" type="button">
+                            <span aria-hidden="true" class="text-[16px]" data-kid="1-3-1-1-3-1-2-1">
+                                <i class="ti ti-current-location" data-kid="1-3-1-1-3-1-2-1-1">
+                                </i>
+                            </span>
+                            Use my location
+                        </button>
+                        <button class="focus-ring yellow-action inline-flex items-center justify-center gap-3 rounded-[2px] bg-[#FFC530] px-5 py-3 surge-mono text-[10px] font-semibold uppercase tracking-[.12em] text-[#14161A]" data-kid="1-3-1-1-3-1-3" type="submit">
+                            Show open bays
+                            <span aria-hidden="true" class="text-[16px]" data-kid="1-3-1-1-3-1-3-1">
+                                <i class="ti ti-route" data-kid="1-3-1-1-3-1-3-1-1">
+                                </i>
+                            </span>
+                        </button>
+                        <div aria-live="polite" class="surge-mono text-[10px] uppercase leading-5 tracking-[.1em] text-[#B7D96B] lg:max-w-[155px]" data-dynamic="true" data-kid="1-3-1-1-3-1-4" data-name="route search status text" data-reason="text updated by search form submission and location button" id="route-search-status">
+                            5 station updates
+                            <br data-kid="1-3-1-1-3-1-4-1" data-name="line break in search status"/>
+                            <span class="text-[#F0F0EA]/45" data-kid="1-3-1-1-3-1-4-2" data-name="search status helper text">
+                                Search to filter the ledger
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section aria-labelledby="network-title" class="border-b border-[#2A2D35]" data-kid="1-3-2" id="network">
+            <div class="mx-auto grid max-w-[1320px] lg:grid-cols-[.8fr_1.75fr_auto]" data-kid="1-3-2-1">
+                <div class="border-b border-[#2A2D35] px-6 py-12 lg:border-b-0 lg:border-r lg:px-10 lg:py-16" data-kid="1-3-2-1-1">
+                    <p class="surge-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="1-3-2-1-1-1">
+                        02 / Network footprint
+                    </p>
+                    <h2 class="surge-display mt-5 text-6xl font-bold uppercase leading-[.82] tracking-[-.04em]" data-kid="1-3-2-1-1-2" id="network-title">
+                        A network
+                        <br data-kid="1-3-2-1-1-2-1"/>
+                        built to keep
+                        <br data-kid="1-3-2-1-1-2-2"/>
+                        <span class="text-[#FFC530]" data-kid="1-3-2-1-1-2-3">
+                            routes open.
+                        </span>
+                    </h2>
+                </div>
+                <div class="divide-y divide-[#2A2D35]" data-kid="1-3-2-1-2">
+                    <div class="grid grid-cols-[1fr_auto] items-end gap-4 px-6 py-7 lg:px-10" data-kid="1-3-2-1-2-1">
+                        <div class="flex items-end gap-5" data-kid="1-3-2-1-2-1-1">
+                            <span class="surge-display text-7xl leading-[.7] text-[#FFC530]" data-kid="1-3-2-1-2-1-1-1">
+                                500+
+                            </span>
+                            <span class="surge-mono mb-1 text-[10px] uppercase tracking-[.16em] text-[#F0F0EA]/70" data-kid="1-3-2-1-2-1-1-2">
+                                Locations
+                            </span>
+                        </div>
+                        <span class="surge-mono text-[10px] text-[#F0F0EA]/40" data-kid="1-3-2-1-2-1-2">
+                            01
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-[1fr_auto] items-end gap-4 px-6 py-7 lg:px-10" data-kid="1-3-2-1-2-2">
+                        <div class="flex items-end gap-5" data-kid="1-3-2-1-2-2-1">
+                            <span class="surge-display text-7xl leading-[.7]" data-kid="1-3-2-1-2-2-1-1">
+                                1000+
+                            </span>
+                            <span class="surge-mono mb-1 text-[10px] uppercase tracking-[.16em] text-[#F0F0EA]/70" data-kid="1-3-2-1-2-2-1-2">
+                                Charge points
+                            </span>
+                        </div>
+                        <span class="surge-mono text-[10px] text-[#F0F0EA]/40" data-kid="1-3-2-1-2-2-2">
+                            02
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-[1fr_auto] items-end gap-4 px-6 py-7 lg:px-10" data-kid="1-3-2-1-2-3">
+                        <div class="flex items-end gap-5" data-kid="1-3-2-1-2-3-1">
+                            <span class="surge-display text-7xl leading-[.7]" data-kid="1-3-2-1-2-3-1-1">
+                                90+
+                            </span>
+                            <span class="surge-mono mb-1 text-[10px] uppercase tracking-[.16em] text-[#F0F0EA]/70" data-kid="1-3-2-1-2-3-1-2">
+                                Stations building
+                            </span>
+                        </div>
+                        <span class="surge-mono text-[10px] text-[#F0F0EA]/40" data-kid="1-3-2-1-2-3-2">
+                            03
+                        </span>
+                    </div>
+                </div>
+                <div class="flex min-h-[270px] flex-col justify-between bg-[#FFC530] p-6 text-[#14161A] lg:w-[220px] lg:p-7" data-kid="1-3-2-1-3">
+                    <span class="surge-mono text-[10px] uppercase tracking-[.15em]" data-kid="1-3-2-1-3-1">
+                        Karnataka / network expansion
+                    </span>
+                    <span class="surge-display text-7xl uppercase leading-[.78]" data-kid="1-3-2-1-3-2">
+                        Keep
+                        <br data-kid="1-3-2-1-3-2-1"/>
+                        moving.
+                    </span>
+                    <span class="surge-mono text-[10px] uppercase tracking-[.13em]" data-kid="1-3-2-1-3-3">
+                        Tumkur → highway
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section aria-labelledby="how-title" class="border-b border-[#2A2D35]" data-kid="1-3-3" id="how">
+            <div class="mx-auto max-w-[1320px] px-6 py-14 lg:px-10 lg:py-20" data-kid="1-3-3-1">
+                <div class="flex flex-wrap items-end justify-between gap-6 border-b border-[#2A2D35] pb-6" data-kid="1-3-3-1-1">
+                    <div data-kid="1-3-3-1-1-1">
+                        <p class="surge-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="1-3-3-1-1-1-1">
+                            03 / At the charger
+                        </p>
+                        <h2 class="surge-display mt-4 text-6xl font-bold uppercase leading-[.82] tracking-[-.04em]" data-kid="1-3-3-1-1-1-2" id="how-title">
+                            Three moves.
+                            <br data-kid="1-3-3-1-1-1-2-1"/>
+                            <span class="text-[#FFC530]" data-kid="1-3-3-1-1-1-2-2">
+                                Zero guesswork.
+                            </span>
+                        </h2>
+                    </div>
+                    <span class="surge-mono max-w-[260px] text-right text-[10px] uppercase leading-5 tracking-[.12em] text-[#F0F0EA]/50" data-kid="1-3-3-1-1-2">
+                        Locate → plug → charge / built for the road
+                    </span>
+                </div>
+                <div class="relative mt-10 grid gap-10 md:grid-cols-3 md:gap-0" data-kid="1-3-3-1-2">
+                    <div aria-hidden="true" class="absolute left-[9%] right-[9%] top-8 hidden h-px bg-[#2A2D35] md:block" data-kid="1-3-3-1-2-1">
+                    </div>
+                    <article class="relative border-l border-[#2A2D35] px-6 md:min-h-[260px] md:border-l-0 md:px-8 md:first:pl-0" data-kid="1-3-3-1-2-2">
+                        <div class="relative z-10 grid h-16 w-16 place-items-center border border-[#FFC530] bg-[#14161A] surge-mono text-2xl text-[#FFC530]" data-kid="1-3-3-1-2-2-1">
+                            01
+                        </div>
+                        <div aria-hidden="true" class="mt-9 flex items-center gap-3 text-[23px] text-[#FFC530]" data-kid="1-3-3-1-2-2-2">
+                            <i class="ti ti-map-pin" data-kid="1-3-3-1-2-2-2-1">
+                            </i>
+                            <span class="surge-mono text-[9px] uppercase tracking-[.14em] text-[#F0F0EA]/45" data-kid="1-3-3-1-2-2-2-2">
+                                GPS / open bays
+                            </span>
+                        </div>
+                        <h3 class="surge-display mt-5 text-5xl uppercase leading-none" data-kid="1-3-3-1-2-2-3">
+                            Locate
+                        </h3>
+                        <p class="mt-4 max-w-[280px] leading-7 text-[#F0F0EA]/65" data-kid="1-3-3-1-2-2-4">
+                            Find an open SURGE charger near your route.
+                        </p>
+                    </article>
+                    <article class="relative border-l border-[#2A2D35] px-6 md:min-h-[260px] md:px-8" data-kid="1-3-3-1-2-3">
+                        <div class="relative z-10 grid h-16 w-16 place-items-center border border-[#FFC530] bg-[#14161A] surge-mono text-2xl text-[#FFC530]" data-kid="1-3-3-1-2-3-1">
+                            02
+                        </div>
+                        <div aria-hidden="true" class="mt-9 flex items-center gap-3 text-[23px] text-[#FFC530]" data-kid="1-3-3-1-2-3-2">
+                            <i class="ti ti-plug-connected" data-kid="1-3-3-1-2-3-2-1">
+                            </i>
+                            <span class="surge-mono text-[9px] uppercase tracking-[.14em] text-[#F0F0EA]/45" data-kid="1-3-3-1-2-3-2-2">
+                                CCS2 / handshake
+                            </span>
+                        </div>
+                        <h3 class="surge-display mt-5 text-5xl uppercase leading-none" data-kid="1-3-3-1-2-3-3">
+                            Plug
+                        </h3>
+                        <p class="mt-4 max-w-[280px] leading-7 text-[#F0F0EA]/65" data-kid="1-3-3-1-2-3-4">
+                            Connect your CCS2 cable at the bay.
+                        </p>
+                    </article>
+                    <article class="relative border-l border-[#2A2D35] px-6 md:min-h-[260px] md:px-8 md:last:pr-0" data-kid="1-3-3-1-2-4">
+                        <div class="relative z-10 grid h-16 w-16 place-items-center border border-[#FFC530] bg-[#14161A] surge-mono text-2xl text-[#FFC530]" data-kid="1-3-3-1-2-4-1">
+                            03
+                        </div>
+                        <div aria-hidden="true" class="mt-9 flex items-center gap-3 text-[23px] text-[#FFC530]" data-kid="1-3-3-1-2-4-2">
+                            <i class="ti ti-bolt" data-kid="1-3-3-1-2-4-2-1">
+                            </i>
+                            <span class="surge-mono text-[9px] uppercase tracking-[.14em] text-[#F0F0EA]/45" data-kid="1-3-3-1-2-4-2-2">
+                                Auto-pay / drive on
+                            </span>
+                        </div>
+                        <h3 class="surge-display mt-5 text-5xl uppercase leading-none" data-kid="1-3-3-1-2-4-3">
+                            Charge
+                        </h3>
+                        <p class="mt-4 max-w-[280px] leading-7 text-[#F0F0EA]/65" data-kid="1-3-3-1-2-4-4">
+                            Pay in the app and leave when your session is complete.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section aria-labelledby="rates-title" class="border-b border-[#2A2D35]" data-kid="1-3-4" id="rates">
+            <div class="mx-auto max-w-[1320px] px-6 py-14 lg:px-10 lg:py-20" data-kid="1-3-4-1">
+                <div class="flex flex-wrap items-end justify-between gap-5 border-b border-[#2A2D35] pb-6" data-kid="1-3-4-1-1">
+                    <div data-kid="1-3-4-1-1-1">
+                        <p class="surge-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="1-3-4-1-1-1-1">
+                            04 / Rates you can check
+                        </p>
+                        <h2 class="surge-display mt-4 text-6xl font-bold uppercase leading-[.82]" data-kid="1-3-4-1-1-1-2" id="rates-title">
+                            Clear rates.
+                            <br data-kid="1-3-4-1-1-1-2-1"/>
+                            <span class="text-[#FFC530]" data-kid="1-3-4-1-1-1-2-2">
+                                No theatre.
+                            </span>
+                        </h2>
+                    </div>
+                    <span class="surge-mono text-[10px] uppercase tracking-[.14em] text-[#F0F0EA]/50" data-kid="1-3-4-1-1-2">
+                        All rates shown per kWh
+                    </span>
+                </div>
+                <div class="mt-10 overflow-x-auto border border-[#2A2D35]" data-kid="1-3-4-1-2">
+                    <table class="w-full min-w-[760px] border-collapse surge-mono text-sm" data-kid="1-3-4-1-2-1">
+                        <caption class="sr-only" data-kid="1-3-4-1-2-1-1">
+                            SURGE charging rates for standard, fleet and peak use
+                        </caption>
+                        <thead data-kid="1-3-4-1-2-1-2">
+                            <tr class="bg-[#1C1E23] text-left text-[10px] uppercase tracking-[.16em] text-[#F0F0EA]/60" data-kid="1-3-4-1-2-1-2-1">
+                                <th class="border-b border-[#2A2D35] p-5 font-normal" data-kid="1-3-4-1-2-1-2-1-1">
+                                    Rate matrix
+                                </th>
+                                <th class="border-b border-l border-[#2A2D35] p-5 font-normal" data-kid="1-3-4-1-2-1-2-1-2">
+                                    Standard
+                                </th>
+                                <th class="border-b border-l border-[#FF5A1F] p-5 font-normal text-[#FF5A1F]" data-kid="1-3-4-1-2-1-2-1-3">
+                                    Fleet
+                                </th>
+                                <th class="border-b border-l border-[#2A2D35] p-5 font-normal" data-kid="1-3-4-1-2-1-2-1-4">
+                                    Peak
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody data-kid="1-3-4-1-2-1-3">
+                            <tr data-kid="1-3-4-1-2-1-3-1">
+                                <th class="border-b border-[#2A2D35] p-5 text-left text-[10px] font-normal uppercase tracking-[.12em] text-[#F0F0EA]/45" data-kid="1-3-4-1-2-1-3-1-1">
+                                    Price / kWh
+                                </th>
+                                <td class="border-b border-l border-[#2A2D35] p-5 text-2xl text-[#FFC530]" data-kid="1-3-4-1-2-1-3-1-2">
+                                    ₹21
+                                </td>
+                                <td class="border-b border-l border-[#FF5A1F] p-5 text-2xl text-[#F0F0EA]" data-kid="1-3-4-1-2-1-3-1-3">
+                                    ₹19–20
+                                </td>
+                                <td class="border-b border-l border-[#2A2D35] p-5 text-2xl text-[#F0F0EA]" data-kid="1-3-4-1-2-1-3-1-4">
+                                    ₹22–24
+                                </td>
+                            </tr>
+                            <tr data-kid="1-3-4-1-2-1-3-2">
+                                <th class="border-b border-[#2A2D35] p-5 text-left text-[10px] font-normal uppercase tracking-[.12em] text-[#F0F0EA]/45" data-kid="1-3-4-1-2-1-3-2-1">
+                                    Use
+                                </th>
+                                <td class="border-b border-l border-[#2A2D35] p-5 text-[#F0F0EA]/70" data-kid="1-3-4-1-2-1-3-2-2">
+                                    Public charging
+                                </td>
+                                <td class="border-b border-l border-[#FF5A1F] p-5 text-[#F0F0EA]/70" data-kid="1-3-4-1-2-1-3-2-3">
+                                    Daily routes
+                                </td>
+                                <td class="border-b border-l border-[#2A2D35] p-5 text-[#F0F0EA]/70" data-kid="1-3-4-1-2-1-3-2-4">
+                                    High demand
+                                </td>
+                            </tr>
+                            <tr data-kid="1-3-4-1-2-1-3-3">
+                                <th class="p-5 text-left text-[10px] font-normal uppercase tracking-[.12em] text-[#F0F0EA]/45" data-kid="1-3-4-1-2-1-3-3-1">
+                                    Terms
+                                </th>
+                                <td class="border-l border-[#2A2D35] p-5 text-[#F0F0EA]/70" data-kid="1-3-4-1-2-1-3-3-2">
+                                    Pay as you go
+                                </td>
+                                <td class="border-l border-[#FF5A1F] p-5 text-[#F0F0EA]/70" data-kid="1-3-4-1-2-1-3-3-3">
+                                    Volume-based access
+                                </td>
+                                <td class="border-l border-[#2A2D35] p-5 text-[#F0F0EA]/70" data-kid="1-3-4-1-2-1-3-3-4">
+                                    Current rate in app
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <a class="focus-ring mt-6 inline-flex items-center gap-3 surge-mono text-[10px] uppercase tracking-[.14em] text-[#FFC530] underline decoration-[#FFC530] underline-offset-4" data-kid="1-3-4-1-3" href="#contact">
+                    Ask about fleet access
+                    <span aria-hidden="true" class="text-[16px]" data-kid="1-3-4-1-3-1">
+                        <i class="ti ti-arrow-up-right" data-kid="1-3-4-1-3-1-1">
+                        </i>
+                    </span>
+                </a>
+            </div>
+        </section>
+        <section aria-labelledby="reliability-title" class="border-b border-[#2A2D35] bg-[#1C1E23]" data-kid="1-3-5" id="reliability">
+            <div class="mx-auto grid max-w-[1320px] lg:grid-cols-[.9fr_1.1fr]" data-kid="1-3-5-1">
+                <div class="border-b border-[#2A2D35] px-6 py-14 lg:border-b-0 lg:border-r lg:px-10 lg:py-20" data-kid="1-3-5-1-1">
+                    <p class="surge-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="1-3-5-1-1-1">
+                        05 / Hardware behind the stop
+                    </p>
+                    <h2 class="surge-display mt-6 text-[clamp(5rem,9vw,9rem)] uppercase leading-[.76] tracking-[-.055em] text-[#FFC530]" data-kid="1-3-5-1-1-2" id="reliability-title">
+                        500kVA
+                        <br data-kid="1-3-5-1-1-2-1"/>
+                        <span class="text-[#F0F0EA]" data-kid="1-3-5-1-1-2-2">
+                            HT
+                        </span>
+                    </h2>
+                    <p class="mt-9 max-w-[390px] text-lg leading-8 text-[#F0F0EA]/65" data-kid="1-3-5-1-1-3">
+                        Capacity designed to support fast sessions without turning two bays into one queue.
+                    </p>
+                    <div class="mt-12 border-t border-[#2A2D35] pt-4 surge-mono text-[10px] uppercase tracking-[.14em] text-[#B7D96B]" data-kid="1-3-5-1-1-4">
+                        Trace / one-time readout / stable
+                    </div>
+                </div>
+                <div class="px-6 py-14 lg:px-10 lg:py-20" data-kid="1-3-5-1-2">
+                    <div class="flex items-center justify-between border-b border-[#2A2D35] pb-4 surge-mono text-[10px] uppercase tracking-[.15em] text-[#F0F0EA]/50" data-kid="1-3-5-1-2-1">
+                        <span data-kid="1-3-5-1-2-1-1">
+                            Specification sheet / bay array 01
+                        </span>
+                        <span class="text-[#B7D96B]" data-kid="1-3-5-1-2-1-2">
+                            ● engineering verified
+                        </span>
+                    </div>
+                    <svg aria-label="Charging power trace" class="mt-8 h-32 w-full" data-kid="1-3-5-1-2-2" preserveaspectratio="none" viewbox="0 0 700 120">
+                        <path class="trace-draw" d="M0 68C45 68 54 30 102 30S160 91 210 91S272 49 321 49S381 78 426 78S481 23 530 23S590 63 700 63" fill="none" pathlength="1" stroke="#FFC530" stroke-width="3">
+                        </path>
+                        <path d="M0 74C90 74 110 55 186 55S287 83 355 83S458 45 522 45S618 70 700 70" fill="none" stroke="#FF5A1F" stroke-dasharray="2 10" stroke-width="1.5">
+                        </path>
+                    </svg>
+                    <div class="mt-8 divide-y divide-[#2A2D35] border-t border-[#2A2D35] surge-mono" data-kid="1-3-5-1-2-3">
+                        <div class="grid grid-cols-[1fr_auto] gap-5 py-5 text-[10px] uppercase tracking-[.13em] text-[#F0F0EA]/55" data-kid="1-3-5-1-2-3-1">
+                            <span data-kid="1-3-5-1-2-3-1-1">
+                                Independent bays
+                            </span>
+                            <strong class="text-3xl font-normal tracking-normal text-[#F0F0EA]" data-kid="1-3-5-1-2-3-1-2">
+                                2 × 180kW
+                            </strong>
+                        </div>
+                        <div class="grid grid-cols-[1fr_auto] gap-5 py-5 text-[10px] uppercase tracking-[.13em] text-[#F0F0EA]/55" data-kid="1-3-5-1-2-3-2">
+                            <span data-kid="1-3-5-1-2-3-2-1">
+                                Connector standard
+                            </span>
+                            <strong class="text-3xl font-normal tracking-normal text-[#FFC530]" data-kid="1-3-5-1-2-3-2-2">
+                                CCS2
+                            </strong>
+                        </div>
+                        <div class="grid grid-cols-[1fr_auto] gap-5 py-5 text-[10px] uppercase tracking-[.13em] text-[#F0F0EA]/55" data-kid="1-3-5-1-2-3-3">
+                            <span data-kid="1-3-5-1-2-3-3-1">
+                                Monitoring
+                            </span>
+                            <strong class="text-3xl font-normal tracking-normal text-[#F0F0EA]" data-kid="1-3-5-1-2-3-3-2">
+                                24/7
+                            </strong>
+                        </div>
+                        <div class="grid grid-cols-[1fr_auto] gap-5 py-5 text-[10px] uppercase tracking-[.13em] text-[#F0F0EA]/55" data-kid="1-3-5-1-2-3-4">
+                            <span data-kid="1-3-5-1-2-3-4-1">
+                                Per charger output
+                            </span>
+                            <strong class="text-3xl font-normal tracking-normal text-[#F0F0EA]" data-kid="1-3-5-1-2-3-4-2">
+                                180kW
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section aria-labelledby="business-title" class="border-b border-[#14161A] bg-[#FFC530] text-[#14161A]" data-kid="1-3-6" id="business">
+            <div class="mx-auto max-w-[1320px] px-6 py-14 lg:px-10 lg:py-20" data-kid="1-3-6-1">
+                <div class="flex flex-wrap items-end justify-between gap-8" data-kid="1-3-6-1-1">
+                    <div data-kid="1-3-6-1-1-1">
+                        <p class="surge-mono text-[10px] uppercase tracking-[.18em]" data-kid="1-3-6-1-1-1-1">
+                            06 / Business charging
+                        </p>
+                        <h2 class="surge-display mt-5 max-w-[720px] text-[clamp(4rem,8vw,8rem)] uppercase leading-[.8] tracking-[-.05em]" data-kid="1-3-6-1-1-1-2" id="business-title">
+                            Keep daily
+                            <br data-kid="1-3-6-1-1-1-2-1"/>
+                            routes moving.
+                        </h2>
+                    </div>
+                    <p class="max-w-[260px] surge-mono text-[10px] uppercase leading-5 tracking-[.12em] text-[#14161A]/70" data-kid="1-3-6-1-1-2">
+                        Two clear paths for teams, operators and sites ready for fast charging.
+                    </p>
+                </div>
+                <div class="mt-12 grid gap-4 lg:grid-cols-2" data-kid="1-3-6-1-2">
+                    <article class="border border-[#14161A] p-6 lg:p-8" data-kid="1-3-6-1-2-1">
+                        <div class="flex items-start justify-between gap-4" data-kid="1-3-6-1-2-1-1">
+                            <span class="surge-mono text-[10px] uppercase tracking-[.16em]" data-kid="1-3-6-1-2-1-1-1">
+                                Fleet charging / 01
+                            </span>
+                            <span aria-hidden="true" class="text-[20px]" data-kid="1-3-6-1-2-1-1-2">
+                                <i class="ti ti-road" data-kid="1-3-6-1-2-1-1-2-1">
+                                </i>
+                            </span>
+                        </div>
+                        <h3 class="surge-display mt-16 text-6xl uppercase leading-[.82]" data-kid="1-3-6-1-2-1-2">
+                            Volume-based
+                            <br data-kid="1-3-6-1-2-1-2-1"/>
+                            access.
+                        </h3>
+                        <p class="mt-6 max-w-[390px] leading-7 text-[#14161A]/75" data-kid="1-3-6-1-2-1-3">
+                            Keep drivers moving with dependable bays and a rate built for regular routes.
+                        </p>
+                        <a class="focus-ring dark-action mt-8 inline-flex items-center gap-4 border border-[#14161A] bg-[#14161A] px-5 py-4 surge-mono text-[10px] uppercase tracking-[.12em] text-[#FFC530]" data-enquiry="Fleet partner" data-kid="1-3-6-1-2-1-4" href="#contact">
+                            Ask about fleet access
+                            <span aria-hidden="true" class="text-[17px]" data-kid="1-3-6-1-2-1-4-1">
+                                <i class="ti ti-arrow-up-right" data-kid="1-3-6-1-2-1-4-1-1">
+                                </i>
+                            </span>
+                        </a>
+                    </article>
+                    <article class="border border-[#14161A] bg-[#14161A] p-6 text-[#F0F0EA] lg:p-8" data-kid="1-3-6-1-2-2">
+                        <div class="flex items-start justify-between gap-4" data-kid="1-3-6-1-2-2-1">
+                            <span class="surge-mono text-[10px] uppercase tracking-[.16em] text-[#FFC530]" data-kid="1-3-6-1-2-2-1-1">
+                                Host a station / 02
+                            </span>
+                            <span aria-hidden="true" class="text-[20px] text-[#FFC530]" data-kid="1-3-6-1-2-2-1-2">
+                                <i class="ti ti-building-factory-2" data-kid="1-3-6-1-2-2-1-2-1">
+                                </i>
+                            </span>
+                        </div>
+                        <h3 class="surge-display mt-16 text-6xl uppercase leading-[.82]" data-kid="1-3-6-1-2-2-2">
+                            Put fast
+                            <br data-kid="1-3-6-1-2-2-2-1"/>
+                            power on site.
+                        </h3>
+                        <p class="mt-6 max-w-[390px] leading-7 text-[#F0F0EA]/65" data-kid="1-3-6-1-2-2-3">
+                            Talk to SURGE about hosting a station for the roads and businesses around you.
+                        </p>
+                        <a class="focus-ring mt-8 inline-flex items-center gap-4 border border-[#FFC530] px-5 py-4 surge-mono text-[10px] uppercase tracking-[.12em] text-[#FFC530] hover:bg-[#FFC530] hover:text-[#14161A]" data-enquiry="Host a station" data-kid="1-3-6-1-2-2-4" href="#contact">
+                            Discuss site hosting
+                            <span aria-hidden="true" class="text-[17px]" data-kid="1-3-6-1-2-2-4-1">
+                                <i class="ti ti-arrow-up-right" data-kid="1-3-6-1-2-2-4-1-1">
+                                </i>
+                            </span>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section aria-labelledby="contact-title" class="border-b border-[#2A2D35]" data-kid="1-3-7" id="contact">
+            <div class="mx-auto grid max-w-[1320px] lg:grid-cols-[.72fr_1.28fr]" data-kid="1-3-7-1">
+                <div class="border-b border-[#2A2D35] px-6 py-14 lg:border-b-0 lg:border-r lg:px-10 lg:py-20" data-kid="1-3-7-1-1">
+                    <p class="surge-mono text-[10px] uppercase tracking-[.18em] text-[#FF5A1F]" data-kid="1-3-7-1-1-1">
+                        07 / Operations desk
+                    </p>
+                    <h2 class="surge-display mt-5 text-7xl uppercase leading-[.78] tracking-[-.05em]" data-kid="1-3-7-1-1-2" id="contact-title">
+                        Talk to
+                        <br data-kid="1-3-7-1-1-2-1"/>
+                        <span class="text-[#FFC530]" data-kid="1-3-7-1-1-2-2">
+                            SURGE.
+                        </span>
+                    </h2>
+                    <p class="mt-8 max-w-[290px] text-lg leading-8 text-[#F0F0EA]/65" data-kid="1-3-7-1-1-3">
+                        For charging, fleet and site enquiries.
+                    </p>
+                    <div class="mt-12 border-t border-[#2A2D35] pt-5 surge-mono text-[10px] uppercase leading-6 tracking-[.12em] text-[#F0F0EA]/60" data-kid="1-3-7-1-1-4">
+                        <span class="text-[#FFC530]" data-kid="1-3-7-1-1-4-1">
+                            Surge Electric Pvt Ltd
+                        </span>
+                        <br data-kid="1-3-7-1-1-4-2"/>
+                        Tumkur / Karnataka
+                        <br data-kid="1-3-7-1-1-4-3"/>
+                        <a class="focus-ring ledger-link" data-kid="1-3-7-1-1-4-4" href="#" data-surge-contact-email>contact desk</a>
+                    </div>
+                </div>
+                <div class="px-6 py-14 lg:px-10 lg:py-20" data-kid="1-3-7-1-2">
+                    <form class="grid gap-6" data-kid="1-3-7-1-2-1" id="contact-form-preview">
+                        <div class="grid gap-6 sm:grid-cols-2" data-kid="1-3-7-1-2-1-1">
+                            <label class="surge-mono text-[10px] uppercase tracking-[.14em] text-[#F0F0EA]/65" data-kid="1-3-7-1-2-1-1-1">
+                                Name
+                                <input class="form-input mt-3 block w-full border-b border-[#2A2D35] bg-transparent px-0 py-3 text-base font-sans normal-case tracking-normal text-[#F0F0EA] placeholder:text-[#F0F0EA]/30" data-kid="1-3-7-1-2-1-1-1-1" name="name" placeholder="Your name" required="" type="text"/>
+                            </label>
+                            <label class="surge-mono text-[10px] uppercase tracking-[.14em] text-[#F0F0EA]/65" data-kid="1-3-7-1-2-1-1-2">
+                                Email
+                                <input class="form-input mt-3 block w-full border-b border-[#2A2D35] bg-transparent px-0 py-3 text-base font-sans normal-case tracking-normal text-[#F0F0EA] placeholder:text-[#F0F0EA]/30" data-kid="1-3-7-1-2-1-1-2-1" name="email" placeholder="name@example.com" required="" type="email"/>
+                            </label>
+                        </div>
+                        <label class="surge-mono text-[10px] uppercase tracking-[.14em] text-[#F0F0EA]/65" data-kid="1-3-7-1-2-1-2">
+                            Enquiry type
+                            <select class="form-input mt-3 block w-full border-b border-[#2A2D35] bg-[#14161A] px-0 py-3 text-base font-sans normal-case tracking-normal text-[#F0F0EA]" data-kid="1-3-7-1-2-1-2-1" id="enquiry-type" name="enquiry">
+                                <option data-kid="1-3-7-1-2-1-2-1-1">
+                                    Fleet partner
+                                </option>
+                                <option data-kid="1-3-7-1-2-1-2-1-2">
+                                    Host a station
+                                </option>
+                                <option data-kid="1-3-7-1-2-1-2-1-3">
+                                    Franchisee
+                                </option>
+                            </select>
+                        </label>
+                        <label class="surge-mono text-[10px] uppercase tracking-[.14em] text-[#F0F0EA]/65" data-kid="1-3-7-1-2-1-3">
+                            Message
+                            <textarea class="form-input mt-3 block min-h-[120px] w-full resize-y border-b border-[#2A2D35] bg-transparent px-0 py-3 text-base font-sans normal-case tracking-normal text-[#F0F0EA] placeholder:text-[#F0F0EA]/30" data-kid="1-3-7-1-2-1-3-1" name="message" placeholder="Tell us what you are planning." required=""></textarea>
+                        </label>
+                        <div class="flex flex-wrap items-center justify-between gap-4 border-t border-[#2A2D35] pt-5" data-kid="1-3-7-1-2-1-5">
+                            <button class="focus-ring yellow-action inline-flex items-center gap-4 rounded-[2px] bg-[#FFC530] px-5 py-4 surge-mono text-[10px] font-semibold uppercase tracking-[.14em] text-[#14161A]" data-kid="1-3-7-1-2-1-5-1" type="submit">
+                                Send enquiry
+                                <span aria-hidden="true" class="text-[17px]" data-kid="1-3-7-1-2-1-5-1-1">
+                                    <i class="ti ti-arrow-up-right" data-kid="1-3-7-1-2-1-5-1-1-1">
+                                    </i>
+                                </span>
+                            </button>
+                            <p aria-live="polite" class="surge-mono text-[10px] uppercase tracking-[.12em] text-[#B7D96B]" data-dynamic="true" data-kid="1-3-7-1-2-1-5-2" data-name="form status feedback text" data-reason="text updated after contact form submission" id="form-status">
+                                Replies go to <span data-surge-contact-email>the configured SURGE inbox</span>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-[#14161A]" data-kid="1-4">
+        <div class="mx-auto max-w-[1320px] px-6 py-12 lg:px-10" data-kid="1-4-1">
+            <div class="flex flex-wrap items-end justify-between gap-8 border-b border-[#2A2D35] pb-8" data-kid="1-4-1-1">
+                <div data-kid="1-4-1-1-1">
+                    <a aria-label="Back to SURGE top" class="focus-ring flex w-fit items-center gap-3" data-kid="1-4-1-1-1-1" href="#route-ledger-top">
+                        <span aria-hidden="true" class="grid h-9 w-9 place-items-center rounded-[2px] bg-[#FFC530] text-[18px] text-[#14161A]" data-kid="1-4-1-1-1-1-1">
+                            <i class="ti ti-bolt" data-kid="1-4-1-1-1-1-1-1">
+                            </i>
+                        </span>
+                        <span class="surge-display text-3xl font-bold uppercase" data-kid="1-4-1-1-1-1-2">
+                            SURGE
+                        </span>
+                    </a>
+                    <p class="mt-5 max-w-[430px] text-sm leading-6 text-[#F0F0EA]/55" data-kid="1-4-1-1-1-2">
+                        Fast charging for Karnataka’s roads and businesses.
+                    </p>
+                </div>
+                <span class="surge-mono text-[10px] uppercase tracking-[.16em] text-[#B7D96B]" data-kid="1-4-1-1-2">
+                    [ Network online ]
+                </span>
+            </div>
+            <div class="flex flex-wrap justify-between gap-6 pt-7 surge-mono text-[9px] uppercase tracking-[.13em] text-[#F0F0EA]/50" data-kid="1-4-1-2">
+                <span data-kid="1-4-1-2-1">
+                    © 2026 Surge Electric Pvt Ltd / Tumkur, Karnataka
+                </span>
+                <span data-kid="1-4-1-2-2">
+                    <a class="focus-ring ledger-link" data-kid="1-4-1-2-2-1" href="#rates">
+                        Rates
+                    </a>
+                    ·
+                    <a class="focus-ring ledger-link" data-kid="1-4-1-2-2-2" href="#business">
+                        Business
+                    </a>
+                    ·
+                    <a class="focus-ring ledger-link" data-kid="1-4-1-2-2-3" href="/privacy">
+                        Privacy
+                    </a>
+                    ·
+                    <a class="focus-ring ledger-link" data-kid="1-4-1-2-2-4" href="/terms">
+                        Terms
+                    </a>
+                </span>
+                <a class="focus-ring ledger-link text-[#FFC530]" data-kid="1-4-1-2-3" href="#" data-surge-contact-email>contact desk</a>
+            </div>
+        </div>
+    </footer>
+</div>
+<script type="module">
+    import { animate, svg } from 'https://esm.sh/animejs@4';
+  const route = document.querySelector('.route-draw');
+  const trace = document.querySelector('.trace-draw');
+  const playOnce = (element, delay = 0) => {
+    if (!element || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    animate(svg.createDrawable(element), { draw: ['0 0', '0 1'], duration: 1500, delay, ease: 'out(3)' });
+  };
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      if (entry.target === route) playOnce(route);
+      if (entry.target === trace) playOnce(trace, 180);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.18 });
+  [route, trace].forEach((element) => element && revealObserver.observe(element));
+
+  const searchForm = document.querySelector('#route-search');
+  const destination = document.querySelector('#destination');
+  const searchStatus = document.querySelector('#route-search-status');
+  const useLocation = document.querySelector('#use-location');
+  useLocation?.addEventListener('click', () => {
+    destination.value = 'Tumkur / Karnataka route';
+    destination.focus();
+    searchStatus.innerHTML = 'Location ready<br><span class="text-[#F0F0EA]/45">Show open bays to scan</span>';
+  });
+  searchForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const query = destination.value.trim() || 'Mysuru Highway';
+    searchStatus.innerHTML = `${query.slice(0, 22)}<br><span class="text-[#FFC530]">3/6 available / CCS2</span>`;
+  });
+
+  const enquiry = document.querySelector('#enquiry-type');
+  document.querySelectorAll('[data-enquiry]').forEach((link) => link.addEventListener('click', () => {
+    if (enquiry) enquiry.value = link.dataset.enquiry;
+  }));
+  document.querySelector('#contact-form-preview')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    document.querySelector('#form-status').textContent = 'Preview ready / connect Google Form to send';
+  });
+</script>
+</div>
+</body></html>
