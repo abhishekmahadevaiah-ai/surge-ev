@@ -65,7 +65,7 @@
     banner.innerHTML = `
       <div>
         <p class="surge-cookie-title">Site preferences</p>
-        <p class="surge-cookie-copy">SURGE uses essential storage for your preference. Optional analytics only loads after you choose it. <a href="privacy.html">Read the privacy notice</a>.</p>
+        <p class="surge-cookie-copy">SURGE uses essential storage for your preference. Optional analytics only loads after you choose it. <a href="/privacy">Read the privacy notice</a>.</p>
       </div>
       <div class="surge-cookie-actions">
         <button class="surge-cookie-button" data-consent="necessary" type="button">Necessary only</button>
