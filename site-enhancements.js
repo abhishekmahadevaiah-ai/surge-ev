@@ -72,6 +72,28 @@
     window.gtag('config', analyticsId, { anonymize_ip: true });
   };
 
+  const addAnalyticsEventTracking = () => {
+    document.querySelectorAll('[data-analytics-event]').forEach((element) => {
+      if (element.dataset.analyticsBound === 'true') {
+        return;
+      }
+
+      element.addEventListener('click', () => {
+        if (readConsent() !== 'analytics' || typeof window.gtag !== 'function') {
+          return;
+        }
+
+        window.gtag('event', element.dataset.analyticsEvent, {
+          event_category: 'engagement',
+          event_label: element.dataset.analyticsLocation || 'site',
+          transport_type: 'beacon',
+        });
+      }, { passive: true });
+
+      element.dataset.analyticsBound = 'true';
+    });
+  };
+
   const addSkipLink = () => {
     const main = document.querySelector('main');
     if (!main || document.querySelector('.surge-skip-link')) {
@@ -156,6 +178,7 @@
 
   const initialise = () => {
     addSkipLink();
+    addAnalyticsEventTracking();
     const consent = readConsent();
 
     if (consent === 'analytics') {
