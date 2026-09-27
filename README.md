@@ -38,7 +38,7 @@ Then visit <http://localhost:8080/>. This only previews the static files; it doe
 - Google Fonts remain loaded from Google’s stylesheet; Tabler Icons Webfont 3.35.0 and its MIT license are vendored at `assets/vendor/tabler-icons/`, so icon glyphs do not depend on a third-party CDN at runtime. The homepage hero uses a Pexels-hosted stock charging-station photo by Reinhard Bruckner; its visible attribution and alt text state that it is illustrative, not a verified SURGE site. The homepage also requests Anime.js from esm.sh for decorative SVG motion; these image/font/motion requests are separate from analytics consent. The confirmed Tumakuru Google Maps destination opens only after the visitor chooses its outbound link or “Load interactive Google Map”; the iframe is created on click and makes no map request on initial page view.
 - The contact form performs browser-side validation and opens a prefilled email draft to the official support inbox. It cannot confirm delivery. It is not backed by a server endpoint and does not provide server-side validation, rate limiting, abuse monitoring or duplicate-submission protection.
 - Google Forms configuration remains unused. Do not say that the static form is connected to Google Forms.
-- The full data-flow register, field-level form map, unresolved decisions and pre-launch checks are in [PRE-PUBLISH-AUDIT.md](./PRE-PUBLISH-AUDIT.md).
+- The full data-flow register, field-level form map, unresolved decisions and pre-launch checks are in [PRE-PUBLISH-AUDIT.md](./PRE-PUBLISH-AUDIT.md). Public pages version the support config URL so returning browsers fetch the current contact address after deployment.
 
 ## Deployment safeguard
 
