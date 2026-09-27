@@ -54,3 +54,12 @@
 - Axe-core 4.11.1 reported **zero violations** at the 390 × 844 mobile candidate viewport. The 320 px document minimum-width regression was removed; the candidate document scroll width matched its client width at 320, 390, 768, 902, 920, 1000, 1050 and 1440 px.
 - The generated gallery’s three images loaded at 1024 × 576. Keyboard ArrowRight moved between slides; the previous/next disabled states and polite status updated. These candidate checks do not indicate that the gallery is live or tested behind the production CSP.
 - Real assistive-technology speech and actual 200%/400% browser zoom remain unverified; the live-browser environment did not provide a screen-reader engine or actionable zoom shortcut.
+
+## Final cache-busted production review — 27 September 2026, 18:26 UTC
+
+- Production release commit `e49af87` deployed successfully in GitHub Actions run `36340455523`. Homepage theme/CSS/carousel scripts are loaded from versioned URLs to avoid stale assets; shared theme-script URLs on Contact, policy and 404 pages were versioned too.
+- The production homepage opened light with an older saved dark-theme value present, and its theme-color metadata was white. Theme changes still update the toggle state and persist across reload.
+- Production axe-core 4.11.1 checks reported **zero violations** on homepage and contact at 390 × 844. Contact blank-submit test focused `#contact-name`, exposed the existing validation status, and did not launch an email.
+- Production at 320, 390, 768 and 1440 CSS px had no document horizontal overflow. The three concept images loaded; Left/Right carousel operation updated the polite status and the next button disabled at the final item. Escape closes mobile navigation and returns focus. The map is inserted only on click.
+- Clean public routes returned 200. HSTS, CSP, `X-Frame-Options` and `X-Content-Type-Options` were present. Internal audit/docs returned 404; legacy route aliases redirected to `/`.
+- Actual NVDA/JAWS/VoiceOver/TalkBack output and browser 200%/400% zoom/reflow checks remain outstanding; use the manual checklist in `kombai-accessibility-audit-2026-09-27-22-27.md`. This automated/browser QA is not an accessibility certification.
