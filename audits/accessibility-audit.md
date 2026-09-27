@@ -39,3 +39,18 @@
 - After the final Pages deployment, homepage, contact, privacy, and cookie pages were scanned with axe-core 4.11.1 at 659 × 711: **zero reported violations** on each; homepage additionally had zero findings at 390 × 844. Automated scans do not replace assistive-technology review.
 - Production mobile nav: opening announces expanded; Escape closes it, resets `aria-expanded` and restores focus to the menu toggle. Contact blank submit focuses `#contact-name` and announces the validation status without sending any message.
 - Production map: no frame is present on initial load; the click control adds the titled Google Maps iframe. It displayed the owner-confirmed pin without horizontal overflow. Cross-origin iframe content was not separately evaluated by axe; perform manual screen-reader checks before claiming complete accessibility.
+
+## Live keyboard, accessible-tree, and zoom check — 27 September 2026, 16:51 UTC
+
+- On `https://www.surgecharging.com/`, manually reviewed the browser accessibility-tree snapshot: a “Skip to content” link, banner, labelled “Main navigation,” main landmark, one level-1 heading, content sections, labelled controls and `contentinfo` landmark were exposed. The hero image had descriptive alt text identifying the photographer and clearly saying the photo is illustrative/not a confirmed SURGE site.
+- Keyboard test at 390 × 844: focusing the mobile menu toggle and pressing Enter set `aria-expanded="true"`; Escape closed the menu and returned focus to `#menu-toggle` with its “Open menu” name.
+- The 320-CSS-pixel live viewport had horizontal page overflow (document scroll width 346 px versus a 305 px client width); inspection traced the overflow to the mobile theme-toggle label/control extending beyond the header. The local, not-yet-deployed candidate hides that label on narrow screens and removes the document's 320 px minimum width; its follow-up check must verify no document overflow at 320 px.
+- Attempting browser zoom keyboard shortcuts in the automated live-browser session did not change device scale or CSS viewport width, so this did **not** count as a 200%/400% zoom test. No NVDA, JAWS, VoiceOver or TalkBack speech output was available; the accessibility-tree review is not a substitute for listening with a screen reader. Actual screen-reader and browser zoom tests remain outstanding.
+- The current live deployment predates the working-tree founder/gallery update; AI-gallery load, controls and keyboard interaction have been validated only against the local preview candidate, not production.
+
+## Working candidate regression checks — 27 September 2026, 17:00 UTC
+
+- The local v7 homepage exposes the Founder section and nav link with only the supplied “Abhishek — Founder” role and company focus. No unverified achievements or personal background were added.
+- Axe-core 4.11.1 reported **zero violations** at the 390 × 844 mobile candidate viewport. The 320 px document minimum-width regression was removed; the candidate document scroll width matched its client width at 320, 390, 768, 902, 920, 1000, 1050 and 1440 px.
+- The generated gallery’s three images loaded at 1024 × 576. Keyboard ArrowRight moved between slides; the previous/next disabled states and polite status updated. These candidate checks do not indicate that the gallery is live or tested behind the production CSP.
+- Real assistive-technology speech and actual 200%/400% browser zoom remain unverified; the live-browser environment did not provide a screen-reader engine or actionable zoom shortcut.

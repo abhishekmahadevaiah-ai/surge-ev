@@ -1,5 +1,5 @@
 (() => {
-  const themeKey = 'surge-theme';
+  const themeKey = 'surge-theme-v2';
   const isTheme = (value) => value === 'light' || value === 'dark';
 
   const readTheme = () => {
@@ -10,7 +10,8 @@
       // Theme selection still works for the current page when storage is blocked.
     }
 
-    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    // Start in SURGE's light theme unless the visitor explicitly saved another choice.
+    return 'light';
   };
 
   const applyTheme = (theme) => {
