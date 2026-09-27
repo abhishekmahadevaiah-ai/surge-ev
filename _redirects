@@ -3,24 +3,15 @@ http://surgecharging.com/* https://www.surgecharging.com/:splat 301
 http://www.surgecharging.com/* https://www.surgecharging.com/:splat 301
 https://surgecharging.com/* https://www.surgecharging.com/:splat 301
 
-# Public clean routes
-/privacy-policy /privacy-policy.html 200
-/terms-and-conditions /terms-and-conditions.html 200
-/cookie-policy /cookie-policy.html 200
-/refund-cancellation-policy /refund-cancellation-policy.html 200
-/contact /contact.html 200
+# Public clean routes are served automatically by Pages from matching .html files.
+# Do not rewrite clean URLs back onto themselves; Pages already serves those files.
 
-# Retain existing public policy URLs as aliases and canonicalize file URLs
+# Retain legacy policy aliases. Pages serves each matching .html document at its clean URL
+# and handles the corresponding .html-to-clean canonical redirect automatically.
 /privacy /privacy-policy 301
 /privacy.html /privacy-policy 301
-/privacy-policy.html /privacy-policy 301
 /terms /terms-and-conditions 301
 /terms.html /terms-and-conditions 301
-/terms-and-conditions.html /terms-and-conditions 301
-/cookie-policy.html /cookie-policy 301
-/refund-cancellation-policy.html /refund-cancellation-policy 301
-/contact.html /contact 301
-/index.html / 301
 
 # Keep working previews and historical versions out of the public route tree
 /v7 / 301
