@@ -1,14 +1,22 @@
 (() => {
-  const allowedTopics = new Set(['Fleet partnership', 'Host a station', 'Franchisee']);
+  const topicAliases = new Map([
+    ['Fleet partnership', 'Fleet enquiry'],
+    ['Host a station', 'Charging-site enquiry'],
+    ['Franchisee', 'Other'],
+    ['Fleet enquiry', 'Fleet enquiry'],
+    ['Charging-site enquiry', 'Charging-site enquiry'],
+    ['Charging support', 'Charging support'],
+    ['Other', 'Other'],
+  ]);
   const select = document.querySelector('#contact-topic');
 
   if (!select) {
     return;
   }
 
-  const topic = new URLSearchParams(window.location.search).get('topic');
-
-  if (!allowedTopics.has(topic)) {
+  const requestedTopic = new URLSearchParams(window.location.search).get('topic');
+  const topic = topicAliases.get(requestedTopic);
+  if (!topic) {
     return;
   }
 

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
   <title id="title">SURGE favicon</title>
-  <desc id="desc">A voltage-yellow SURGE S mark on a near-black square.</desc>
-  <rect width="64" height="64" rx="4" fill="#14161A"/>
-  <rect x="4" y="4" width="56" height="56" rx="2" fill="#FFC530"/>
-  <text x="32" y="45" text-anchor="middle" fill="#14161A" font-family="Arial, sans-serif" font-size="40" font-weight="900">S</text>
+  <desc id="desc">An electric-blue SURGE S on a white square.</desc>
+  <rect width="64" height="64" rx="8" fill="#FFFFFF"/>
+  <rect x="2" y="2" width="60" height="60" rx="6" fill="none" stroke="#E5E7EB" stroke-width="2"/>
+  <text x="32" y="46" text-anchor="middle" fill="#2563EB" font-family="Arial, sans-serif" font-size="45" font-weight="900">S</text>
 </svg>
