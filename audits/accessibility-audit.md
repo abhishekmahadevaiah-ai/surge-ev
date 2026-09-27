@@ -26,3 +26,16 @@
 - The legacy archived page’s contrast fixes were checked locally: `#9B9FA6` on `#14161A` = 6.82:1; `#FF7043` on `#2A2D35` = 5.02:1. Its repaired menu also closes on Escape and restores focus. Axe reports one moderate `region` finding on its off-screen screen-reader-only description; this archive remains noindex and must remain redirected.
 - The candidate hero image loaded at 1600 px natural width in the browser, with alt text naming its photographer and stating that it is not a verified SURGE site. It remains externally hosted; a deployment/cache cold-load check is still required.
 - With the map collapsed at 390 × 844, no map iframe was present; after clicking the map control, one titled Google Maps frame appeared and the viewport had no horizontal overflow. The post-activation axe scan reported zero violations. Screen-reader announcement of the third-party map content itself has not been manually assessed.
+
+## Final deployed production checks — 27 September 2026 (13:05–13:29 UTC)
+
+- After the clean-route and support-cache hotfixes, axe-core 4.11.1 reported **zero violations** on live homepage, contact, privacy-policy and cookie-policy snapshots at 659 × 711. The homepage also had zero violations at 1038 × 711 and 390 × 844.
+- Production mobile menu opens, updates `aria-expanded`, and closes on Escape with focus returned to the menu toggle. Blank contact-form submission focuses `#contact-name` and announces the validation message; no message was sent.
+- Google Maps was absent on initial page load and inserted only on activation; the confirmed pin rendered in the iframe. Map activation retained the 375 px mobile layout without horizontal overflow. Cross-origin map controls/announcements have not been manually screen-reader tested.
+- Manual screen-reader use, 200%/400% zoom, reduced-motion with assistive technology, other browsers/OS and qualified accessibility/legal review remain outstanding.
+
+## Live production checks — 27 September 2026
+
+- After the final Pages deployment, homepage, contact, privacy, and cookie pages were scanned with axe-core 4.11.1 at 659 × 711: **zero reported violations** on each; homepage additionally had zero findings at 390 × 844. Automated scans do not replace assistive-technology review.
+- Production mobile nav: opening announces expanded; Escape closes it, resets `aria-expanded` and restores focus to the menu toggle. Contact blank submit focuses `#contact-name` and announces the validation status without sending any message.
+- Production map: no frame is present on initial load; the click control adds the titled Google Maps iframe. It displayed the owner-confirmed pin without horizontal overflow. Cross-origin iframe content was not separately evaluated by axe; perform manual screen-reader checks before claiming complete accessibility.
