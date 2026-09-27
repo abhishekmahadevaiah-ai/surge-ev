@@ -42,6 +42,6 @@ Then visit <http://localhost:8080/>. This only previews the static files; it doe
 
 ## Deployment safeguard
 
-The GitHub Actions workflow at `.github/workflows/deploy.yml` deploys the repository to Cloudflare Pages on pushes to `main`. **Do not merge or push this audit work to the production branch until the legal-review note, owner confirmations and technical blockers in `PRE-PUBLISH-AUDIT.md` are resolved.** This task does not publish the site.
+The GitHub Actions workflow at `.github/workflows/deploy.yml` deploys on pushes to `main`, but stages an explicit allowlist of public assets instead of uploading repository root documentation and archived previews. **Do not merge or push this audit work to the production branch until the legal-review note, owner confirmations and technical blockers in `PRE-PUBLISH-AUDIT.md` are resolved.** This task does not publish the site.
 
 Before any release, test the production response headers, clean URLs, form experience, consent accept/reject/withdraw behavior and third-party network requests. Confirm HTTPS and the CSP against the final live deployment. Perform desktop, tablet, mobile, keyboard and screen-reader QA. No legal review or external security penetration test is claimed in this repository.

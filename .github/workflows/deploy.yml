@@ -17,17 +17,25 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Ensure Cloudflare Pages project exists
-        uses: cloudflare/wrangler-action@v3
-        continue-on-error: true
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages project create surge-ev --production-branch=main
+      - name: Assemble public Pages assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          publish_dir="${RUNNER_TEMP}/surge-pages"
+          mkdir -p "$publish_dir"
+          cp -R assets "$publish_dir/assets"
+          cp 404.html _headers _redirects analytics-config.js contact-form.js contact-topic-prefill.js contact.html cookie-policy.html favicon.svg index.html legal.css og-image.svg privacy-policy.html refund-cancellation-policy.html robots.txt site-config.js site-enhancements.css site-enhancements.js site-theme.js sitemap.xml terms-and-conditions.html v7.css v7.js "$publish_dir/"
+          test -f "$publish_dir/index.html"
+          test -f "$publish_dir/_headers"
+          test -f "$publish_dir/_redirects"
+          test ! -e "$publish_dir/PRE-PUBLISH-AUDIT.md"
+          test ! -e "$publish_dir/audits"
+          test ! -e "$publish_dir/README.md"
+          test ! -e "$publish_dir/index-legacy-20260927.html"
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=surge-ev
+          command: pages deploy "${{ runner.temp }}/surge-pages" --project-name=surge-ev
