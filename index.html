@@ -64,6 +64,7 @@
   <script src="/site-config.js"></script>
   <script src="/analytics-config.js"></script>
   <script src="/site-enhancements.js" defer></script>
+  <script src="/map-embed.js" defer></script>
   <script src="/v7.js" defer></script>
 </head>
 <body class="v7-page">
@@ -135,10 +136,10 @@
     </section>
 
     <section class="locations-section" id="locations" aria-labelledby="locations-title">
-      <div class="container"><div class="section-heading-row location-heading"><div><p class="eyebrow">Location / Karnataka</p><h2 class="display-heading" id="locations-title">Tumakuru,<br>Karnataka.</h2></div><p class="section-aside">Open the supplied Google Maps destination when you choose. No third-party map is loaded automatically.</p></div>
+      <div class="container"><div class="section-heading-row location-heading"><div><p class="eyebrow">Location / Karnataka</p><h2 class="display-heading" id="locations-title">Tumakuru,<br>Karnataka.</h2></div><p class="section-aside">Load the interactive Google Map only when you choose. No map request is made on page load.</p></div>
         <div class="map-layout">
-          <div class="map-frame map-placeholder" role="group" aria-label="Location illustration; open the Google Maps directions link to view a map"><span class="map-grid" aria-hidden="true"></span><div class="map-marker" aria-hidden="true"><i class="ti ti-bolt"></i></div><p class="map-caption">Directions via Google Maps / Tumakuru</p></div>
-          <div class="station-panel" role="group" aria-labelledby="station-title"><div><p class="eyebrow">Charging destination</p><h3 class="station-title" id="station-title">Tumakuru,<br>Karnataka.</h3><p class="station-copy">Open the SURGE Google Maps destination for directions. Confirm station access and current details with SURGE before travelling.</p><p class="station-place"><i class="ti ti-map-pin" aria-hidden="true"></i><span>Tumakuru, Karnataka<br>India</span></p></div>
+          <div class="map-frame map-placeholder" id="surge-map" role="group" aria-label="Map of the confirmed SURGE charging destination in Tumakuru, Karnataka" data-map-container><span class="map-grid" aria-hidden="true"></span><div class="map-marker" aria-hidden="true"><i class="ti ti-bolt"></i></div><p class="map-caption">Tumakuru / Karnataka / India</p><button class="button button-primary map-load-button" type="button" data-load-map>Load interactive Google Map <i class="ti ti-map-pin" aria-hidden="true"></i></button></div>
+          <div class="station-panel" role="group" aria-labelledby="station-title"><div><p class="eyebrow">Charging destination</p><h3 class="station-title" id="station-title">Tumakuru,<br>Karnataka.</h3><p class="station-copy">Load the interactive map when you choose, or open Google Maps directions. Confirm station access and current details with SURGE before travelling.</p><p class="station-place"><i class="ti ti-map-pin" aria-hidden="true"></i><span>Tumakuru, Karnataka<br>India</span></p></div>
             <a class="button button-primary button-wide" href="https://maps.app.goo.gl/UCeRWfbSys4rKRE69?g_st=iw" target="_blank" rel="noopener noreferrer">Open directions <i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
           </div>
         </div>

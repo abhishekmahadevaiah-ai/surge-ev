@@ -721,6 +721,22 @@ a:focus-visible {
   font-size: 9px;
 }
 
+.map-load-button {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: min(86%, 260px);
+  min-height: 52px;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 18%);
+}
+
+.map-load-button:hover { transform: translate(-50%, calc(-50% - 2px)); }
+
+:root[data-theme='dark'] .map-load-button { color: #0B1220; }
+
 .station-panel {
   display: flex;
   flex-direction: column;
